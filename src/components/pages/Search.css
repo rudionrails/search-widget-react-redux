@@ -1,0 +1,36 @@
+.Search {
+  overflow: auto;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  color: #dce6e6;
+  background: rgb(70, 74, 76, 0.7);
+}
+
+.Search--open {
+  pointer-events: auto;
+}
+
+.Search-close {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  right: 1rem;
+
+  color: #dce6e6;
+  cursor: pointer;
+}
+
+.Search-results {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: green;
+}

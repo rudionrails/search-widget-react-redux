@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/pages/App';
+import Search from './components/pages/Search';
 import './index.css';
 
+function destroy() {
+  alert('destroy');
+};
+
 ReactDOM.render(
-  <App />,
+  <Search onClose={destroy} />,
   document.getElementById('root')
 );

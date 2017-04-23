@@ -1,0 +1,10 @@
+.Bar {
+  width: 100%;
+  height: 30%;
+
+  background: #2d3535;
+}
+
+.Bar .row {
+  height: 100%;
+}
