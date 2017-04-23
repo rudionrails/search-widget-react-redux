@@ -16,11 +16,8 @@ const Search = ({
       <i className="material-icons">clear</i>
     </div>
 
-    <Bar />
-
-    <div className="Search-results">
-      <Results />
-    </div>
+    <Bar className="Search--top" />
+    <Results className="Search--bottom" />
   </div>
 );
 

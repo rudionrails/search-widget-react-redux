@@ -1,5 +1,12 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+/**
+ * main container
+ */
+#main {
+  transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+#main.main--hide {
+  opacity: 0;
+  transform: scale3d(0.8, 0.8, 1);
 }

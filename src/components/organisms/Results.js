@@ -11,8 +11,9 @@ const Result = () => (
 
 const Results = ({
   results = [],
+  className,
 }) => (
-  <div className="Results container-fluid">
+  <div className={`Results container-fluid ${className}`}>
     <div className="row">
       <div className="col">
         <div className="Result-heading">Accounts</div>

@@ -8,3 +8,23 @@
 .Bar .row {
   height: 100%;
 }
+
+.Bar input {
+  color: #dce6e6;
+  background: transparent;
+
+  border: 0 none;
+  border-radius: 0;
+  border-bottom: 2px solid #dce6e6;
+}
+
+.Bar input:focus {
+  color: inherit;
+  background: inherit;
+  border-color: inherit;
+}
+
+.Bar-hint {
+  display: block;
+  text-align: right;
+}
