@@ -7,8 +7,10 @@
 }
 
 .Result {
-  border: 0 none;
+  font-weight: bold;
+
   background: rgba(118, 117, 128, 0.05);
+  border: 0 none;
 }
 
 .Result + .Result {
@@ -16,7 +18,7 @@
 }
 
 .Result:hover {
-  color: rgb(125, 173, 3);
+  color: #fba019;
   background: rgba(118, 117, 128, 0.1);
 }
 

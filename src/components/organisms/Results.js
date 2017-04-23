@@ -15,14 +15,14 @@ const Results = ({
 }) => (
   <div className={`Results container-fluid ${className}`}>
     <div className="row">
-      <div className="col">
+      <div className="col-sm-12 col-md-4">
         <div className="Result-heading">Accounts</div>
 
         <Result />
         <Result />
       </div>
 
-      <div className="col">
+      <div className="col-sm-12 col-md-4">
         <div className="Result-heading">Transactions</div>
 
         <Result />
@@ -30,7 +30,7 @@ const Results = ({
         <Result />
       </div>
 
-      <div className="col">
+      <div className="col-sm-12 col-md-4">
         <div className="Result-heading">Other</div>
 
         <Result />

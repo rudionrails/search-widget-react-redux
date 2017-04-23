@@ -5,22 +5,20 @@ import './index.css';
 
 let container;
 
-
 /**
 * Keydown event listener
 */
-const closeEventListener = ({ keyCode }) => {
+const destroyEventListener = ({ keyCode }) => {
+  console.log('destroyEventListener');
   if(keyCode === 27) destroy();
 };
 
 const createEventListener = (event) => {
-  if (event.code === 'KeyF') {
+  if (event.key === 'F') {
     event.preventDefault();
     create();
   }
 };
-
-document.addEventListener('keypress', createEventListener);
 
 /**
 * Destroys the widget instance
@@ -43,15 +41,19 @@ function destroy() {
     const main = document.getElementById('main');
     main.classList.remove('main--hide');
 
+    /**
+    * handle event listeners
+    */
+    document.removeEventListener('keydown', destroyEventListener);
+    document.addEventListener('keydown', createEventListener);
+
     setTimeout(() => resolve(), 300);
   }).then(() => {
     /**
      * Unmount the whole app and unset the variables
      */
     ReactDOM.unmountComponentAtNode(container);
-
     document.body.removeChild(container);
-    document.removeEventListener('keydown', closeEventListener);
 
     container = undefined;
   });
@@ -65,14 +67,15 @@ function destroy() {
 function create() {
   if (container) throw new Error('Widget already created');
   container = document.createElement('div');
-
-  /**
-  * append to body and add ESC key listener
-  */
   document.body.appendChild(container);
-  document.addEventListener('keydown', closeEventListener);
 
   return new Promise(resolve => {
+    /**
+    * handle event listeners
+    */
+    document.addEventListener('keydown', destroyEventListener);
+    document.removeEventListener('keydown', createEventListener);
+
     ReactDOM.render(
       <Search onClose={destroy} />,
       container,
@@ -106,6 +109,8 @@ const SearchWidget = Object.freeze({
  * the browser. For NodeJS, just export the CommonJS module.
  */
 if (typeof window !== 'undefined') {
+  document.addEventListener('keydown', createEventListener);
+
   Object.assign(window, {
     SearchWidget,
   });
