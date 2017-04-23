@@ -11,7 +11,7 @@ const Input = ({
     <div className="input-group">
       <input
         type="text"
-        className="form-control"
+        className="form-control display-1"
         placeholder={placeholder}
         value={value}
         onChange={onChange}

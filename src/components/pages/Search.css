@@ -7,8 +7,10 @@
   bottom: 0;
   left: 0;
 
-  color: #dce6e6;
-  background: rgb(70, 74, 76, 0.7);
+  /* color: #dce6e6; */
+  color: #c2c2c2;
+  /* background: rgb(70, 74, 76, 0.7); */
+  background: #f1f1f1;
 }
 
 .Search--open {
@@ -25,12 +27,3 @@
   cursor: pointer;
 }
 
-.Search-results {
-  position: absolute;
-  top: 30%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  background: green;
-}

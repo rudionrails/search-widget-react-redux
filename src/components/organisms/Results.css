@@ -1,0 +1,30 @@
+.Results {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.Result {
+  border: 0 none;
+  /* border-radius: 0; */
+
+  background: rgba(118, 117, 128, 0.05);
+}
+
+.Result + .Result {
+  margin-top: 3px;
+}
+
+.Result:hover {
+  color: rgb(125, 173, 3);
+  background: rgba(118, 117, 128, 0.1);
+}
+
+.Result-heading {
+  margin-top: 1rem;
+
+  text-transform: uppercase;
+  font-weight: bold;
+}
