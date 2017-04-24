@@ -1,20 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Bar.css';
 
 class Bar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { value: '' };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
   componentDidMount() {
     this.searchInput.focus();
-  }
-
-  handleChange({ target }) {
-    this.setState({ value: target.value });
   }
 
   render() {
@@ -27,9 +17,9 @@ class Bar extends React.Component {
                 type="text"
                 className="form-control"
                 placeholder="Search"
-                value={this.state.value}
+                value={this.props.value}
                 ref={(input) => { this.searchInput = input; }}
-                onChange={this.handleChange} />
+                onChange={this.props.onChange} />
             </div>
 
             <small className="Bar-hint">
@@ -42,8 +32,10 @@ class Bar extends React.Component {
   }
 };
 
-// bar.propTypes = {
-//   value: 
-// };
+Bar.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
 
 export default Bar;
