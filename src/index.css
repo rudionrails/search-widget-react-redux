@@ -6,7 +6,7 @@
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-#main.main--hide {
+#main.is-hidden {
   opacity: 0;
   transform: scale3d(0.8, 0.8, 1);
 }

@@ -9,15 +9,12 @@ const Search = ({
   onClose,
 }) => (
   <div className="Search">
-    <div
-      className="Search-close"
-      onClick={onClose}
-    >
+    <div className="Search-close" onClick={onClose}>
       <i className="material-icons">clear</i>
     </div>
 
-    <Bar className="Search--top" />
-    <Results className="Search--bottom" />
+    <Bar className="Search-top" />
+    <Results className="Search-bottom" />
   </div>
 );
 

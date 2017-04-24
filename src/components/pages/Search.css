@@ -1,4 +1,7 @@
 .Search {
+  transition: 0.3s ease;
+
+  opacity: 0;
   overflow: auto;
 
   position: fixed;
@@ -8,13 +11,11 @@
   left: 0;
 
   color: #c2c2c2;
-  background: transparent;
 }
 
 .Search-close {
-  transform: scale3d(0.8, 0.8, 1);
-  transition: 0.3s;
-  opacity: 0;
+  transform: scale3d(0.6, 0.6, 1);
+  transition: 0.3s ease;
 
   position: absolute;
   z-index: 1;
@@ -25,37 +26,31 @@
   cursor: pointer;
 }
 
-.Search--top {
-  transform: translate3d(0, -100%, 0);
-  transition: transform 0.3s;
-  transition-timing-function: ease;;
-
-  opacity: 0;
-}
-
-.Search--bottom {
+.Search-top {
+  transform: translate3d(0, -10%, 0);
   transition: transform 0.3s ease;
-  transform: translate3d(0, 100%, 0);
-
-  opacity: 0;
-  /* background: #f1f1f1; */
 }
 
-.Search--open {
+.Search-bottom {
+  transition: transform 0.3s ease;
+  transform: translate3d(0, 30%, 0);
+}
+
+.Search.is-open {
   pointer-events: auto;
+  opacity: 1;
 }
 
-.Search--open .Search-close {
+.Search.is-open .Search-close {
   transform: scale3d(1, 1, 1);
-  opacity: 1;
 }
 
-.Search--open .Search--top {
+.Search.is-open .Search-top {
   transform: translate3d(0, 0, 0);
-  opacity: 1;
+  /* opacity: 1; */
 }
 
-.Search--open .Search--bottom {
+.Search.is-open .Search-bottom {
   transform: translate3d(0, 0, 0);
-  opacity: 1;
+  /* opacity: 1; */
 }

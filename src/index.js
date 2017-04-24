@@ -33,13 +33,13 @@ function destroy() {
      * We transition the React container out and then resolve the promise
      */
     const DOMNode = ReactDOM.findDOMNode(container);
-    DOMNode.firstChild.classList.remove('Search--open');
+    DOMNode.firstChild.classList.remove('is-open');
 
     /**
     * show main content
     */
     const main = document.getElementById('main');
-    main.classList.remove('main--hide');
+    main.classList.remove('is-hidden');
 
     /**
     * handle event listeners
@@ -88,13 +88,13 @@ function create() {
      */
     setTimeout(() => {
       const DOMNode = ReactDOM.findDOMNode(container);
-      DOMNode.firstChild.classList.add('Search--open');
+      DOMNode.firstChild.classList.add('is-open');
 
       /**
       * hide main content
       */
       const main = document.getElementById('main');
-      main.classList.add('main--hide');
+      main.classList.add('is-hidden');
     }, 17);
   });
 }
