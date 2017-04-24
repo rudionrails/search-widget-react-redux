@@ -2,8 +2,19 @@ import React from 'react';
 import './Bar.css';
 
 class Bar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   componentDidMount() {
     this.searchInput.focus();
+  }
+
+  handleChange({ target }) {
+    this.setState({ value: target.value });
   }
 
   render() {
@@ -16,12 +27,14 @@ class Bar extends React.Component {
                 type="text"
                 className="form-control"
                 placeholder="Search"
+                value={this.state.value}
                 ref={(input) => { this.searchInput = input; }}
-                onChange={this.props.onChange}
-              />
+                onChange={this.handleChange} />
             </div>
 
-            <small className="Bar-hint">Type for search or hit ESC to close</small>
+            <small className="Bar-hint">
+              Type for search or hit ESC to close
+            </small>
           </div>
         </div>
       </div>
