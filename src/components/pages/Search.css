@@ -28,12 +28,12 @@
 
 .Search-top {
   transform: translate3d(0, -10%, 0);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .Search-bottom {
-  transition: transform 0.3s ease;
-  transform: translate3d(0, 30%, 0);
+  transition: transform 0.2s ease;
+  transform: translate3d(0, 10%, 0);
 }
 
 .Search.is-open {

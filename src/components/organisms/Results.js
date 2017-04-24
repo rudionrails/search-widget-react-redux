@@ -1,42 +1,41 @@
 import React from 'react';
 import './Results.css';
 
-const Result = () => (
+const Result = ({ value }) => (
   <div className="Result card">
     <div className="card-block">
-      This is some text within a card block.
+      { value }
     </div>
   </div>
 );
 
 const Results = ({
-  results = [],
   className,
+  accounts,
+  transactions,
+  other,
 }) => (
   <div className={`Results container-fluid ${className}`}>
     <div className="row">
       <div className="col-sm-12 col-md-4">
         <div className="Result-heading">Accounts</div>
 
-        <Result />
-        <Result />
+        {accounts.map((value, id) =>
+          <Result value={value} key={`account-${id}`} />)}
       </div>
 
       <div className="col-sm-12 col-md-4">
         <div className="Result-heading">Transactions</div>
 
-        <Result />
-        <Result />
-        <Result />
+        {transactions.map((value, id) =>
+          <Result value={value} key={`transaction-${id}`} />)}
       </div>
 
       <div className="col-sm-12 col-md-4">
         <div className="Result-heading">Other</div>
 
-        <Result />
-        <Result />
-        <Result />
-        <Result />
+        {other.map((value, id) =>
+          <Result value={value} key={`other-${id}`} />)}
       </div>
     </div>
   </div>

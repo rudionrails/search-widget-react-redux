@@ -19,7 +19,7 @@ class Bar extends React.Component {
                 placeholder="Search"
                 value={this.props.value}
                 ref={(input) => { this.searchInput = input; }}
-                onChange={this.props.onChange} />
+                onChange={this.props.handleSearch} />
             </div>
 
             <small className="Bar-hint">
@@ -34,7 +34,7 @@ class Bar extends React.Component {
 
 Bar.propTypes = {
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  handleSearch: PropTypes.func.isRequired,
   className: PropTypes.string,
 };
 

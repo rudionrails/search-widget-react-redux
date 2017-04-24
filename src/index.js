@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from './components/pages/Search';
+import store from './store';
 import './index.css';
 
 let container;
@@ -9,15 +10,14 @@ let container;
 * Keydown event listener
 */
 const destroyEventListener = ({ keyCode }) => {
-  console.log('destroyEventListener');
   if(keyCode === 27) destroy();
 };
 
 const createEventListener = (event) => {
-  if (event.key === 'F') {
-    event.preventDefault();
-    create();
-  }
+  if (event.key !== 'F') return;
+
+  event.preventDefault();
+  create();
 };
 
 /**
@@ -77,7 +77,7 @@ function create() {
     document.removeEventListener('keydown', createEventListener);
 
     ReactDOM.render(
-      <Search onClose={destroy} />,
+      <Search store={store} onClose={destroy} />,
       container,
       () => resolve()
     );
