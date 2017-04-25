@@ -47,10 +47,8 @@
 
 .Search.is-open .Search-top {
   transform: translate3d(0, 0, 0);
-  /* opacity: 1; */
 }
 
 .Search.is-open .Search-bottom {
   transform: translate3d(0, 0, 0);
-  /* opacity: 1; */
 }
