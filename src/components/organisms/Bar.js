@@ -17,9 +17,9 @@ class Bar extends React.Component {
                 type="text"
                 className="form-control"
                 placeholder="Search"
-                value={this.props.value}
                 ref={(input) => { this.searchInput = input; }}
-                onChange={this.props.handleSearch} />
+                value={this.props.query}
+                onChange={(event) => this.props.onSearch(event.target.value)} />
             </div>
 
             <small className="Bar-hint">
@@ -33,9 +33,9 @@ class Bar extends React.Component {
 };
 
 Bar.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleSearch: PropTypes.func.isRequired,
   className: PropTypes.string,
+  query: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default Bar;

@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+
 import Search from './components/pages/Search';
-import store from './store';
+import createStore from './store/index';
 import './index.css';
 
-let container;
+const store = createStore();
+let container; // container for the react app
+let main; // container for the overall layout
 
 /**
-* Keydown event listener
+* Event listeners
 */
 const destroyEventListener = ({ keyCode }) => {
   if(keyCode === 27) destroy();
@@ -28,30 +32,22 @@ const createEventListener = (event) => {
 function destroy() {
   if (!container) throw new Error('Widget not created');
 
+  // handle event listeners
+  document.removeEventListener('keydown', destroyEventListener);
+  document.addEventListener('keydown', createEventListener);
+
   return new Promise(resolve => {
-    /**
-     * We transition the React container out and then resolve the promise
-     */
+    // hide app
     const DOMNode = ReactDOM.findDOMNode(container);
     DOMNode.firstChild.classList.remove('is-open');
 
-    /**
-    * show main content
-    */
-    const main = document.getElementById('main');
-    main.classList.remove('is-hidden');
+    // show main content
+    if (main) main.classList.remove('is-hidden');
 
-    /**
-    * handle event listeners
-    */
-    document.removeEventListener('keydown', destroyEventListener);
-    document.addEventListener('keydown', createEventListener);
-
+    // wait for CSS animation to complete
     setTimeout(() => resolve(), 300);
   }).then(() => {
-    /**
-     * Unmount the whole app and unset the variables
-     */
+    // unmount the app
     ReactDOM.unmountComponentAtNode(container);
     document.body.removeChild(container);
 
@@ -66,18 +62,20 @@ function destroy() {
 */
 function create() {
   if (container) throw new Error('Widget already created');
-  container = document.createElement('div');
-  document.body.appendChild(container);
+
+  // handle event listeners
+  document.addEventListener('keydown', destroyEventListener);
+  document.removeEventListener('keydown', createEventListener);
 
   return new Promise(resolve => {
-    /**
-    * handle event listeners
-    */
-    document.addEventListener('keydown', destroyEventListener);
-    document.removeEventListener('keydown', createEventListener);
+    // mount the app
+    container = document.createElement('div');
+    document.body.appendChild(container);
 
     ReactDOM.render(
-      <Search store={store} onClose={destroy} />,
+      <Provider store={store}>
+        <Search onClose={destroy} />
+      </Provider>,
       container,
       () => resolve()
     );
@@ -90,11 +88,9 @@ function create() {
       const DOMNode = ReactDOM.findDOMNode(container);
       DOMNode.firstChild.classList.add('is-open');
 
-      /**
-      * hide main content
-      */
-      const main = document.getElementById('main');
-      main.classList.add('is-hidden');
+      // hide main
+      main = document.getElementById('main');
+      if (main) main.classList.add('is-hidden');
     }, 17);
   });
 }

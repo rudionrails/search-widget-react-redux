@@ -29,12 +29,14 @@
 
 .Search-top {
   transform: translate3d(0, -10%, 0);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
+
+  background: #2d3535;
 }
 
 .Search-bottom {
-  transition: transform 0.2s ease;
   transform: translate3d(0, 10%, 0);
+  transition: transform 0.3s ease;
 }
 
 .Search.is-open {
@@ -42,6 +44,9 @@
   opacity: 1;
 }
 
+/**
+* top-down + bottom-up
+*/
 .Search.is-open .Search-close {
   transform: scale3d(1, 1, 1);
 }

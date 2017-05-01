@@ -11,9 +11,9 @@ const Result = ({ value }) => (
 
 const Results = ({
   className,
-  accounts,
-  transactions,
-  other,
+  accounts = [],
+  transactions = [],
+  other = [],
 }) => (
   <div className={`Results container-fluid ${className}`}>
     <div className="row">

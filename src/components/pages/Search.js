@@ -1,69 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Bar from '../organisms/Bar';
 import Results from '../organisms/Results';
 
+// actions
+import { actions } from '../../store/search/index';
+
 import './Search.css';
 
-function filter(query, results) {
-  const filtered = {};
-  const terms = query.trim().split(/\s+/).map(term => term.toLowerCase());
+const Search = ({
+  query,
+  results,
+  onSearch,
+  onClose,
+}) => (
+  <div className="Search">
+    <div className="Search-close" onClick={onClose}>
+      <i className="material-icons">clear</i>
+    </div>
 
-  return new Promise(resolve => {
-    Object.keys(results).forEach(key => {
-      filtered[key] = results[key].filter(name => {
-        return terms.every(term => name.toLowerCase().includes(term));
-      });
-    });
+    <Bar
+      className="Search-top"
+      query={query}
+      onSearch={onSearch}
+    />
 
-    resolve(filtered);
-  });
-}
-
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: '',
-      results: props.store,
-    };
-
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  handleSearch({ target }) {
-    this.setState({ value: target.value });
-
-    filter(target.value, this.props.store).then(results => {
-      this.setState({ results });
-    })
-  }
-
-  render() {
-    return (
-      <div className="Search">
-        <div className="Search-close" onClick={this.props.onClose}>
-          <i className="material-icons">clear</i>
-        </div>
-
-        <Bar
-          className="Search-top"
-          value={this.state.value}
-          handleSearch={this.handleSearch}
-        />
-
-        <Results
-          className="Search-bottom"
-          {...this.state.results}
-        />
-      </div>
-    );
-  }
-}
+    <Results className="Search-bottom" />
+  </div>
+);
 
 Search.propTypes = {
+  query: PropTypes.string.isRequired,
+  results: PropTypes.object.isRequired,
+  onSearch: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
-export default Search;
+const mapStateToProps = (state, props) => ({
+  query: state.search.query,
+  results: state.search.results,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSearch: (query) => dispatch(actions.search(query)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Search);
