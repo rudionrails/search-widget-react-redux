@@ -1,44 +1,33 @@
 import React from 'react';
-import './Results.css';
+import PropTypes from 'prop-types';
 
-const Result = ({ value }) => (
-  <div className="Result card">
-    <div className="card-block">
-      { value }
-    </div>
-  </div>
-);
+import Column from 'components/molecules/Column';
+import './Results.css';
 
 const Results = ({
   className,
-  accounts = [],
-  transactions = [],
-  other = [],
-}) => (
-  <div className={`Results container-fluid ${className}`}>
-    <div className="row">
-      <div className="col-sm-12 col-md-4">
-        <div className="Result-heading">Accounts</div>
+  results,
+}) => {
+  const columns = Object.entries(results)
+                        .map(([heading, list]) => ({ heading, list }));
 
-        {accounts.map((value, id) =>
-          <Result value={value} key={`account-${id}`} />)}
-      </div>
-
-      <div className="col-sm-12 col-md-4">
-        <div className="Result-heading">Transactions</div>
-
-        {transactions.map((value, id) =>
-          <Result value={value} key={`transaction-${id}`} />)}
-      </div>
-
-      <div className="col-sm-12 col-md-4">
-        <div className="Result-heading">Other</div>
-
-        {other.map((value, id) =>
-          <Result value={value} key={`other-${id}`} />)}
+  return (
+    <div className={`Results container-fluid ${className}`}>
+      <div className="row">
+        {columns.map(({ heading, list }) =>
+          <Column
+            key={`column-${heading}`}
+            heading={heading}
+            list={list}
+          />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+Results.PropTypes = {
+  className: PropTypes.string,
+  results: PropTypes.object.isRequired,
+};
 
 export default Results;

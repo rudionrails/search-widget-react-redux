@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import Search from './components/pages/Search';
-import createStore from './store/index';
+import Search from 'src/containers/pages/Search';
+import createStore from 'src/store/index';
 import './index.css';
 
 const store = createStore();

@@ -1,12 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import Bar from '../organisms/Bar';
-import Results from '../organisms/Results';
-
-// actions
-import { actions } from '../../store/search/index';
+import Bar from 'components/organisms/Bar';
+import Results from 'components/organisms/Results';
 
 import './Search.css';
 
@@ -27,7 +23,10 @@ const Search = ({
       onSearch={onSearch}
     />
 
-    <Results className="Search-bottom" />
+    <Results
+      className="Search-bottom"
+      results={results}
+    />
   </div>
 );
 
@@ -38,16 +37,4 @@ Search.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, props) => ({
-  query: state.search.query,
-  results: state.search.results,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSearch: (query) => dispatch(actions.search(query)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Search);
+export default Search;
