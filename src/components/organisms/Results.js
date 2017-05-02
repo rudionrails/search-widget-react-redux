@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Column from 'components/molecules/Column';
+import Column from 'src/components/molecules/Column';
 import './Results.css';
 
 const Results = ({

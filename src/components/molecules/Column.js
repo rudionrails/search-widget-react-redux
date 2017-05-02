@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Row from 'components/molecules/Row';
+import Row from 'src/components/molecules/Row';
 
 const Column = ({
   heading,

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Bar from 'components/organisms/Bar';
-import Results from 'components/organisms/Results';
+import Bar from 'src/components/organisms/Bar';
+import Results from 'src/components/organisms/Results';
 
 import './Search.css';
 
