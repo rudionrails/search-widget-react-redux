@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { actions } from 'src/store/search/index';
+import { actions } from 'src/store/search';
 import Search from 'src/components/pages/Search';
 
 const mapStateToProps = (state, props) => ({
