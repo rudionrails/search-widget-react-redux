@@ -1,4 +1,4 @@
-import { SEARCH_QUERY } from './actions';
+import { SEARCH } from './actions';
 
 export const INITIAL_STATE = {
   query: '',
@@ -21,7 +21,7 @@ export const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SEARCH_QUERY: {
+    case SEARCH: {
       return Object.assign({}, state, {
         query: action.query,
       });

@@ -1,11 +1,11 @@
 /**
 * Action Types
 */
-export const SEARCH_QUERY = 'SEARCH_QUERY';
+export const SEARCH = 'SEARCH';
 
 /**
 * Action Creators
 */
 export default {
-  search: (query) => ({ type: SEARCH_QUERY, query }),
+  search: (query) => ({ type: SEARCH, query }),
 }
