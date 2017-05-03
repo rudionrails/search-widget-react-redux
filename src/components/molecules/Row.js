@@ -6,7 +6,18 @@ const Row = ({
 }) => (
   <div className="Result card">
     <div className="card-block">
-      { value }
+      <div className="media">
+        <img
+          className="d-flex align-self-start mr-3"
+          alt="64x64" 
+          data-src="holder.js/64x64"
+        />
+
+        <div className="media-body">
+          <h5 className="mt-0">{ value }</h5>
+          <div>Some text to explain the item</div>
+        </div>
+      </div>
     </div>
   </div>
 );

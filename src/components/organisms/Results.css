@@ -7,23 +7,21 @@
 }
 
 .Result {
-  font-weight: bold;
-
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(118, 117, 128, 0.05);
   border: 0 none;
 }
 
-.Result + .Result {
-  margin-top: 3px;
+.Result:hover {
+  color: rgba(217, 83, 79, 1);
+  background: rgba(118, 117, 128, 0.1);
 }
 
-.Result:hover {
-  color: #fba019;
+.Result + .Result {
+  margin-top: 0.5rem;
 }
 
 .Result-heading {
-  margin-top: 1rem;
-
+  margin-bottom: 0.6rem;
   text-transform: uppercase;
   font-weight: bold;
 }

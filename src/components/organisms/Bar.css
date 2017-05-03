@@ -8,18 +8,16 @@
 }
 
 .Bar input {
-  font-size: 200%;
-
-  color: #dce6e6;
   background: transparent;
 
+  color: #d9534f;
   border: 0 none;
   border-radius: 0;
-  border-bottom: 2px solid #dce6e6;
+  border-bottom: 2px solid #d9534f;
 }
 
 .Bar input:focus {
-  color: inherit;
+  color: #d9534f;
   background: inherit;
   border-color: inherit;
 }
@@ -27,4 +25,20 @@
 .Bar-hint {
   display: block;
   text-align: right;
+}
+
+/**
+* Bootstrap overrides
+*/
+.Bar .input-group {
+  font-size: 250%;
+  font-weight: bold;
+}
+
+.Bar .input-group input {
+  font-size: inherit;
+}
+
+.Bar .input-group input::placeholder {
+  color: rgba(145,145,145,0.7);
 }
