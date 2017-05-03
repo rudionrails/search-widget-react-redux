@@ -1,11 +1,11 @@
-import { takeLatest } from 'redux-saga/effects';
+import { call, takeLatest } from 'redux-saga/effects';
 
 import api from 'src/store/api';
 import { SEARCH } from 'src/store/search';
 
 function* fetchSearch({ query }) {
   try {
-    const results = yield api.fetchSearch(query);
+    const results = yield call(api.fetchSearch, query);
 
     console.log('results: ', results);
   } catch(e) {
