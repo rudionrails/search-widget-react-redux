@@ -10,18 +10,24 @@ async function parse({
     included.find(i => i.type === type && i.id === id);
 
   const select = ({
+    id,
     attributes: { headline },
     links: { self },
   }) => ({
-    headline
+    id,
+    headline,
+    url: self,
   });
     
-
-  const results = {};
-  Object.keys(relationships).forEach(key => { 
+  const results = Object.keys(relationships).map(key => { 
     const data = relationships[key].data;
-    results[key] = data.map(item => match(item))
-                       .map(item => select(item));
+    const items = data.map(item => match(item));
+    const list = items.map(item => select(item));
+      
+    return {
+      title: key,
+      list,
+    };
   });
 
   return results;

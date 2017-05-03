@@ -1,33 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Column from 'src/components/molecules/Column';
+import Section from 'src/components/molecules/Section';
 import './Results.css';
 
 const Results = ({
-  className,
+  className = '',
   results,
-}) => {
-  const columns = Object.entries(results)
-                        .map(([heading, list]) => ({ heading, list }));
-
-  return (
-    <div className={`Results container-fluid ${className}`}>
-      <div className="row">
-        {columns.map(({ heading, list }) =>
-          <Column
-            key={`column-${heading}`}
-            heading={heading}
-            list={list}
-          />)}
-      </div>
+}) => (
+  <div className={`Results container-fluid ${className}`}>
+    <div className="row">
+      {results.map(result =>
+        <Section
+          key={`section-${result.title}`}
+          { ...result }
+        />)}
     </div>
-  );
-};
-
-Results.PropTypes = {
-  className: PropTypes.string,
-  results: PropTypes.object.isRequired,
-};
+  </div>
+);
 
 export default Results;

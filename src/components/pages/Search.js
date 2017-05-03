@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Bar from 'src/components/organisms/Bar';
 import Results from 'src/components/organisms/Results';
@@ -7,8 +6,8 @@ import Results from 'src/components/organisms/Results';
 import './Search.css';
 
 const Search = ({
-  query,
-  results,
+  query = '',
+  results = [],
   onSearch,
   onClose,
 }) => (
@@ -29,12 +28,5 @@ const Search = ({
     />
   </div>
 );
-
-Search.propTypes = {
-  query: PropTypes.string.isRequired,
-  results: PropTypes.object.isRequired,
-  onSearch: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 
 export default Search;

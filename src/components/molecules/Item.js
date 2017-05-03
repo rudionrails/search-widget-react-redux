@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Row = ({
-  value,
+const Item = ({
+  id,
+  title,
+  url,
 }) => (
   <div className="Result card">
     <div className="card-block">
@@ -14,16 +15,12 @@ const Row = ({
         />
 
         <div className="media-body">
-          <h5 className="mt-0">{ value }</h5>
-          <div>Some text to explain the item</div>
+          <h5 className="mt-0">{ title }</h5>
+          <div>{ url }</div>
         </div>
       </div>
     </div>
   </div>
 );
 
-Row.PropTypes = {
-  value: PropTypes.string.isRequired,
-};
-
-export default Row;
+export default Item;

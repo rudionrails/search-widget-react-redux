@@ -1,42 +1,32 @@
 const INITIAL_STATE = {
   query: '',
-  results: {
-    accounts: [
-      'Bob',
-      'Alice',
-    ],
-    transactions: [
-      'Dude',
-      'Awesome',
-    ],
-    other: [
-      'Hey',
-      'Ho',
-      'Lets go',
-    ],
-  },
+  results: [],
 };
 
-/**
-* Action Types
-*/
-export const SEARCH = 'SEARCH';
+const SEARCH = 'SEARCH';
+const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 
-/**
-* Action Creators
-*/
+export const types = {
+  SEARCH,
+  SEARCH_SUCCESS,
+}
+
 export const actions = {
   search: (query) => ({ type: SEARCH, query }),
+  searchSuccess: (results) => ({ type: SEARCH_SUCCESS, results }),
 };
 
-/**
-* Reducer
-*/
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SEARCH: {
       return Object.assign({}, state, {
         query: action.query,
+      });
+    }
+
+    case SEARCH_SUCCESS: {
+      return Object.assign({}, state, {
+        results: action.results,
       });
     }
 
