@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Bar.css';
+import Loading from 'src/components/atoms/Loading';
 
 class Bar extends React.Component {
   componentDidMount() {
@@ -21,7 +22,13 @@ class Bar extends React.Component {
                 ref={(input) => { this.searchInput = input; }}
                 value={this.props.query}
                 onChange={(event) => this.props.onSearch(event.target.value)} />
+
+              {this.props.isLoading &&
+                <span className="input-group-addon">
+                  <Loading />
+                </span>}
             </div>
+
           </div>
         </div>
       </div>
@@ -31,6 +38,7 @@ class Bar extends React.Component {
 
 Bar.propTypes = {
   className: PropTypes.string,
+  isLoading: PropTypes.bool.isRequired,
   query: PropTypes.string.isRequired,
   onSearch: PropTypes.func.isRequired,
 };

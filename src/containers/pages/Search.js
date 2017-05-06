@@ -4,6 +4,7 @@ import { actions } from 'src/store/search';
 import Search from 'src/components/pages/Search';
 
 const mapStateToProps = (state, props) => ({
+  isLoading: state.search.isLoading,
   query: state.search.query,
   results: state.search.results,
 });

@@ -8,13 +8,7 @@
 .Bar input,
 .Bar input:focus {
   color: inherit;
-
-  background: #fff;
-  border: 0 none;
-  border-radius: 2px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-              0 1px 5px 0 rgba(0, 0, 0, 0.12),
-              0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  background: transparent;
 }
 
 .Bar-hint {
@@ -27,12 +21,23 @@
 */
 .Bar .input-group {
   font-size: 150%;
+
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+              0 1px 5px 0 rgba(0, 0, 0, 0.12),
+              0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .Bar .input-group input {
   font-size: inherit;
+  border: 0 none;
 }
-
 .Bar .input-group input::placeholder {
   color: rgba(145,145,145,0.7);
+}
+
+.Bar .input-group-addon {
+  background: transparent;
+  border: 0 none;
 }
