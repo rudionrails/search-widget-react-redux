@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import Search from 'src/containers/pages/Search';
 import createStore from 'src/store';
+import { configure } from 'src/config';
 import './index.css';
 
 const store = createStore();
@@ -96,6 +97,7 @@ function create() {
 }
 
 const SearchWidget = Object.freeze({
+  configure,
   create,
   destroy,
 });

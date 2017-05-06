@@ -1,6 +1,5 @@
 import 'whatwg-fetch';
-
-const API_ROOT = 'http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io';
+import config from 'src/config';
 
 async function parse({
   data: { relationships },
@@ -33,8 +32,9 @@ async function parse({
   return results;
 }
 
-async function get(path, params = {}) {
-  const url = [API_ROOT, path].join('/');
+async function get(params = {}) {
+  const url = [config.hostname, config.pathname].join('/');
+  console.log(url);
 
   try {
     const response = await fetch(url, params);
@@ -48,5 +48,5 @@ async function get(path, params = {}) {
 }
 
 export default {
-  fetchSearch: (query) => get('search', { query }),
+  fetchSearch: (query) => get({ query }),
 }
