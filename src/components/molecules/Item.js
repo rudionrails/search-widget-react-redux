@@ -7,17 +7,12 @@ const Item = ({
 }) => (
   <div className="Result card">
     <div className="card-block">
-      <div className="media">
-        <img
-          className="d-flex align-self-start mr-3"
-          alt="64x64" 
-          data-src="holder.js/64x64"
-        />
-
-        <div className="media-body">
-          <h5 className="mt-0">{ title }</h5>
-          <div>{ url }</div>
-        </div>
+      <div class="card-header">
+        { title }
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">{ url }</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       </div>
     </div>
   </div>

@@ -22,10 +22,6 @@ class Bar extends React.Component {
                 value={this.props.query}
                 onChange={(event) => this.props.onSearch(event.target.value)} />
             </div>
-
-            <small className="Bar-hint">
-              Type for search or hit ESC to close
-            </small>
           </div>
         </div>
       </div>
