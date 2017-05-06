@@ -16,17 +16,15 @@ const Search = ({
       <i className="material-icons">clear</i>
     </div>
 
-  <Bar
-    className="Search-top"
-    isLoading={isLoading}
-    query={query}
-    onSearch={onSearch}
-  />
+    <Bar
+      className="Search-top"
+      isLoading={isLoading}
+      query={query}
+      onSearch={onSearch} />
 
-  <Results
-    className="Search-bottom"
-    results={results}
-  />
+    <Results
+      className="Search-bottom"
+      results={results} />
   </div>
 );
 
