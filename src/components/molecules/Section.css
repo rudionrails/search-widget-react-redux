@@ -1,0 +1,9 @@
+.Section {
+}
+
+.Section-title {
+  color: rgba(0, 0, 0, 0.5);
+
+  margin-top: 1rem;
+  text-transform: uppercase;
+}

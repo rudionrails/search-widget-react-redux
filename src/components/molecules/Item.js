@@ -1,20 +1,21 @@
 import React from 'react';
+import './Item.css';
 
 const Item = ({
   id,
   title,
   url,
 }) => (
-  <div className="Result card">
-    <div className="card-block">
-      <div class="card-header">
-        { title }
+  <div className="Item card">
+    <div className="card-block media">
+        <i className="Item-avatar material-icons">account_circle</i>
+
+        <div className="media-body">
+          <h5 className="Item-title">{ title }</h5>
+          <p className="card-text">{ url }</p>
+        </div>
       </div>
-      <div class="card-block">
-        <h4 class="card-title">{ url }</h4>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
+
   </div>
 );
 

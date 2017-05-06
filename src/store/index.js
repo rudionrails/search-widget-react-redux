@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import { reducer as searchReducer } from 'src/store/search';
-import sagas from 'src/store/sagas';
+import sagas, { fetchSearch } from 'src/store/sagas';
 
 const reducer = combineReducers({
   search: searchReducer,
@@ -17,6 +17,7 @@ export default function() {
     middleware,
   ));
 
+  sagaMiddleware.run(fetchSearch);
   sagaMiddleware.run(sagas);
 
   return store;

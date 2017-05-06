@@ -5,16 +5,18 @@ async function parse({
   data: { relationships },
   included, 
 }) {
-  const match = ({ type, id }) =>
-    included.find(i => i.type === type && i.id === id);
+  const match = ({
+    type,
+    id
+  }) => included.find(i => i.type === type && i.id === id);
 
   const select = ({
     id,
-    attributes: { headline },
+    attributes: { title },
     links: { self },
   }) => ({
     id,
-    headline,
+    title,
     url: self,
   });
     
@@ -34,7 +36,6 @@ async function parse({
 
 async function get(params = {}) {
   const url = [config.hostname, config.pathname].join('/');
-  console.log(url);
 
   try {
     const response = await fetch(url, params);
