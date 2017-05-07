@@ -6,6 +6,7 @@ const merge = require('webpack-merge');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const webpackBaseConfig = require('./webpack.config.base');
@@ -55,6 +56,13 @@ module.exports = merge.smart(webpackBaseConfig, {
     // See https://github.com/facebookincubator/create-react-app/issues/240
     new CaseSensitivePathsPlugin(),
 
+    // Circular dependencies are often a necessity in complex software,
+    // the presence of a circular dependency doesn't always imply a bug,
+    // but in the case where the you believe a bug exists, this module may help find it.
+    new CircularDependencyPlugin({
+      exclude: /a\.js|node_modules/, // exclude node_modules
+      failOnError: false, // show a warning when there is a circular dependency
+    }),
 
     // Synchronized browser testing
     // https://www.browsersync.io/
