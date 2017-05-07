@@ -7,6 +7,7 @@ const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const FriendlyErrors = require('friendly-errors-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const webpackBaseConfig = require('./webpack.config.base');
@@ -71,6 +72,8 @@ module.exports = merge.smart(webpackBaseConfig, {
     }, { // Plugin options
       reload: false,
     }),
+
+    new FriendlyErrors()
   ],
 
 
