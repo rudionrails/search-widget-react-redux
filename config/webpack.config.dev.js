@@ -6,6 +6,7 @@ const merge = require('webpack-merge');
 const InterpolateHtmlPlugin = require('interpolate-html-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const webpackBaseConfig = require('./webpack.config.base');
 const rootPath = path.resolve(__dirname, '../');
@@ -52,7 +53,16 @@ module.exports = merge.smart(webpackBaseConfig, {
     // Watcher doesn't work well if you mistype casing in a path so we use
     // a plugin that prints an error when you attempt to do this.
     // See https://github.com/facebookincubator/create-react-app/issues/240
-    new CaseSensitivePathsPlugin()
+    new CaseSensitivePathsPlugin(),
+
+
+    // Synchronized browser testing
+    // https://www.browsersync.io/
+    new BrowserSyncPlugin({
+      proxy: ADDRESS,
+    }, { // Plugin options
+      reload: false,
+    }),
   ],
 
 
