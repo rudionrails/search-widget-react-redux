@@ -10,9 +10,19 @@
   margin-top: 0.5rem;
 }
 
+.Item-content {
+  padding: 1rem;
+}
+
 .Item-avatar {
   margin-right: 1rem;
 
-  font-size: 400%;
+  font-size: 3rem;
   color: rgba(0, 0, 0, 0.2);
+}
+
+.Item-title {
+}
+
+.Item-body {
 }

@@ -7,12 +7,12 @@ const Item = ({
   url,
 }) => (
   <div className="Item card">
-    <div className="card-block media">
+    <div className="Item-content card-block media">
         <i className="Item-avatar material-icons">account_circle</i>
 
         <div className="media-body">
           <h5 className="Item-title">{ title }</h5>
-          <p className="card-text">{ url }</p>
+          <p className="Item-body card-text">{ url }</p>
         </div>
       </div>
 
