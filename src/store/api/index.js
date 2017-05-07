@@ -36,7 +36,6 @@ async function parse({
 
 async function get(params = {}) {
   const url = [config.hostname, config.pathname].join('/');
-  console.log(url);
 
   try {
     const response = await fetch(url, params);
