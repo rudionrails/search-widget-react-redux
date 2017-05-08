@@ -7,7 +7,6 @@ const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.resolve(rootPath, 'src');
 const publicPath = path.resolve(rootPath, 'public');
 
-// webpack config
 module.exports = {
   resolve: {
     extensions: ['.js', '.json'],
@@ -37,37 +36,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          }, 
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: function () {
-                return [
-                  autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
-                    ]
-                  }),
-                ];
-              }
-            }
-          }
-        ]
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         use: [
           {
@@ -94,4 +62,3 @@ module.exports = {
     ],
   },
 }
-

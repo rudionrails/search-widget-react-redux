@@ -3,7 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const InterpolateHtmlPlugin = require('interpolate-html-plugin');
+const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -25,14 +25,43 @@ module.exports = merge.smart(webpackBaseConfig, {
     path.resolve(rootPath, 'src', 'index.js')
   ],
 
-  plugins: [
-    // Makes some environment variables available in index.html.
-    // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-    // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    // In development, this will be an empty string.
-    // new InterpolateHtmlPlugin(env.raw),
-    // new InterpolateHtmlPlugin(),
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          }, 
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  autoprefixer({
+                    browsers: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // React doesn't support IE8 anyway
+                    ]
+                  }),
+                ];
+              }
+            }
+          }
+        ]
+      },
+    ]
+  },
 
+  plugins: [
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       template: path.resolve(publicPath, 'index.html'),
@@ -75,7 +104,6 @@ module.exports = merge.smart(webpackBaseConfig, {
 
     new FriendlyErrors()
   ],
-
 
   // from `webpack-dev-server` module
   devServer: {
