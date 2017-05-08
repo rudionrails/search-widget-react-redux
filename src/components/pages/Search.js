@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import './Search.css';
 import Bar from 'src/components/organisms/Bar';
 import Results from 'src/components/organisms/Results';
+import './Search.css';
 
 const Search = ({
-  isLoading = false,
-  query = '',
-  results = [],
+  isLoading,
+  query,
+  results,
   onSearch,
   onClose,
 }) => (
@@ -27,5 +28,13 @@ const Search = ({
       results={results} />
   </div>
 );
+
+Search.propTypes = {
+  isLoading: PropTypes.bool,
+  query: PropTypes.string.isRequired,
+  results: PropTypes.array.isRequired,
+  onSearch: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default Search;

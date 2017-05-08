@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Item.css';
 
 const Item = ({
@@ -17,5 +19,10 @@ const Item = ({
 
   </div>
 );
+
+Item.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
 
 export default Item;

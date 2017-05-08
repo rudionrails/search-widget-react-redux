@@ -10,11 +10,11 @@ const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const types = {
   SEARCH,
   SEARCH_SUCCESS,
-}
+};
 
 export const actions = {
-  search: (query) => ({ type: SEARCH, query }),
-  searchSuccess: (results) => ({ type: SEARCH_SUCCESS, results }),
+  search: query => ({ type: SEARCH, query }),
+  searchSuccess: results => ({ type: SEARCH_SUCCESS, results }),
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {

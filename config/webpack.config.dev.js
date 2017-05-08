@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -11,6 +9,7 @@ const FriendlyErrors = require('friendly-errors-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const webpackBaseConfig = require('./webpack.config.base');
+
 const rootPath = path.resolve(__dirname, '../');
 const publicPath = path.resolve(rootPath, 'public');
 
@@ -22,7 +21,7 @@ module.exports = merge.smart(webpackBaseConfig, {
   entry: [
     'babel-polyfill',
     `webpack-dev-server/client?${ADDRESS}`,
-    path.resolve(rootPath, 'src', 'index.js')
+    path.resolve(rootPath, 'src', 'index.js'),
   ],
 
   module: {
@@ -31,18 +30,18 @@ module.exports = merge.smart(webpackBaseConfig, {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
-          }, 
+            loader: 'style-loader',
+          },
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
-            }
+              importLoaders: 1,
+            },
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: function () {
+              plugins() {
                 return [
                   autoprefixer({
                     browsers: [
@@ -50,15 +49,15 @@ module.exports = merge.smart(webpackBaseConfig, {
                       'last 4 versions',
                       'Firefox ESR',
                       'not ie < 9', // React doesn't support IE8 anyway
-                    ]
+                    ],
                   }),
                 ];
-              }
-            }
-          }
-        ]
+              },
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
 
   plugins: [
@@ -102,12 +101,12 @@ module.exports = merge.smart(webpackBaseConfig, {
       reload: false,
     }),
 
-    new FriendlyErrors()
+    new FriendlyErrors(),
   ],
 
   // from `webpack-dev-server` module
   devServer: {
     contentBase: publicPath,
     inline: true, // embed the webpack-dev-server runtime into the bundle
-  }
+  },
 });

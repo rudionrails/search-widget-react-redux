@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'; // eslint-disable-line no-unused-vars
 
-import Search from 'src/containers/pages/Search';
+import Search from 'src/containers/pages/Search'; // eslint-disable-line no-unused-vars
 import createStore from 'src/store';
 import { configure } from 'src/config';
 import './index.css';
@@ -15,14 +15,14 @@ let main; // container for the overall layout
 * Event listeners
 */
 const destroyEventListener = ({ keyCode }) => {
-  if(keyCode === 27) destroy();
+  if (keyCode === 27) destroy(); // eslint-disable-line no-use-before-define
 };
 
 const createEventListener = (event) => {
   if (event.key !== 'F') return;
 
   event.preventDefault();
-  create();
+  create(); // eslint-disable-line no-use-before-define
 };
 
 /**
@@ -37,9 +37,9 @@ function destroy() {
   document.removeEventListener('keydown', destroyEventListener);
   document.addEventListener('keydown', createEventListener);
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     // hide app
-    const DOMNode = ReactDOM.findDOMNode(container);
+    const DOMNode = ReactDOM.findDOMNode(container); // eslint-disable-line react/no-find-dom-node
     DOMNode.firstChild.classList.remove('is-open');
 
     // show main content
@@ -68,7 +68,7 @@ function create() {
   document.addEventListener('keydown', destroyEventListener);
   document.removeEventListener('keydown', createEventListener);
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     // mount the app
     container = document.createElement('div');
     document.body.appendChild(container);
@@ -78,7 +78,7 @@ function create() {
         <Search onClose={destroy} />
       </Provider>,
       container,
-      () => resolve()
+      () => resolve(),
     );
   }).then(() => {
     /**
@@ -86,7 +86,7 @@ function create() {
      * event loop (outside the stack) --R
      */
     setTimeout(() => {
-      const DOMNode = ReactDOM.findDOMNode(container);
+      const DOMNode = ReactDOM.findDOMNode(container); // eslint-disable-line react/no-find-dom-node
       DOMNode.firstChild.classList.add('is-open');
 
       // hide main

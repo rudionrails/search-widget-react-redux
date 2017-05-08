@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Section from 'src/components/molecules/Section';
 import './Results.css';
 
 const Results = ({
-  className = '',
+  className,
   results,
 }) => (
   <div className={`Results container-fluid ${className}`}>
@@ -17,5 +18,10 @@ const Results = ({
     </div>
   </div>
 );
+
+Results.propTypes = {
+  className: PropTypes.string,
+  results: PropTypes.array.isRequired,
+};
 
 export default Results;
