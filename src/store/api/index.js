@@ -3,11 +3,11 @@ import config from 'src/config';
 
 async function parse({
   data: { relationships },
-  included, 
+  included,
 }) {
   const match = ({
     type,
-    id
+    id,
   }) => included.find(i => i.type === type && i.id === id);
 
   const select = ({
@@ -19,13 +19,13 @@ async function parse({
     title,
     url: self,
   });
-    
-  const results = Object.keys(relationships).map(key => { 
+
+  const results = Object.keys(relationships).map((key) => {
     const data = relationships[key].data;
     const items = data.map(item => match(item));
     const list = items.map(item => select(item));
-      
     return {
+
       title: key,
       list,
     };
@@ -43,11 +43,11 @@ async function get(params = {}) {
     const data = await parse(json);
 
     return data;
-  } catch(e) {
-    console.log('Error: ', e);
+  } catch (e) {
+    throw e;
   }
 }
 
 export default {
-  fetchSearch: (query) => get({ query }),
-}
+  fetchSearch: query => get({ query }),
+};

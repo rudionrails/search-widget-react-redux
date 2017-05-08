@@ -1,15 +1,12 @@
-'use strict';
-
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const extractCSS = new ExtractTextPlugin('[name].css');
 
 const webpackBaseConfig = require('./webpack.config.base');
+
 const rootPath = path.resolve(__dirname, '../');
 const publicPath = path.resolve(rootPath, 'public');
 const buildPath = path.resolve(process.cwd(), 'build');
@@ -24,7 +21,7 @@ module.exports = merge.smart(webpackBaseConfig, {
 
   entry: [
     'babel-polyfill',
-    path.resolve(rootPath, 'src', 'index.js')
+    path.resolve(rootPath, 'src', 'index.js'),
   ],
 
   output: {
@@ -44,17 +41,17 @@ module.exports = merge.smart(webpackBaseConfig, {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader']
-        })
-      }
-    ]
+          use: ['css-loader'],
+        }),
+      },
+    ],
   },
 
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
 
     // Generates an `index.html` file with the <script> injected.
@@ -72,8 +69,8 @@ module.exports = merge.smart(webpackBaseConfig, {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
-      }
+        minifyURLs: true,
+      },
     }),
 
     // This helps ensure the builds are consistent if source hasn't changed:
@@ -83,15 +80,15 @@ module.exports = merge.smart(webpackBaseConfig, {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true, // React doesn't support IE8
-        warnings: false
+        warnings: false,
       },
       mangle: {
-        screw_ie8: true
+        screw_ie8: true,
       },
       output: {
         comments: false,
-        screw_ie8: true
-      }
+        screw_ie8: true,
+      },
     }),
 
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
@@ -101,7 +98,7 @@ module.exports = merge.smart(webpackBaseConfig, {
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
     new ManifestPlugin({
-      fileName: 'asset-manifest.json'
-    })
-  ]
+      fileName: 'asset-manifest.json',
+    }),
+  ],
 });

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import './Section.css';
 import Item from 'src/components/molecules/Item';
+import './Section.css';
 
 const Section = ({
   title,
@@ -17,5 +18,10 @@ const Section = ({
       />)}
   </div>
 );
+
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+  list: PropTypes.array.isRequired,
+};
 
 export default Section;

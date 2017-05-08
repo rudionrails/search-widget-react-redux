@@ -1,6 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 
 // local config
 const rootPath = path.resolve(__dirname, '../');
@@ -9,7 +7,7 @@ const publicPath = path.resolve(rootPath, 'public');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.json'],
+    extensions: ['.js', '.jsx'],
     alias: {
       src: srcPath,
     },
@@ -17,17 +15,18 @@ module.exports = {
 
   module: {
     rules: [
-      // {
-      //   test: /\.js$/,
-      //   use: {
-      //     loader: 'eslint-loader'
-      //   },
-      //   include: srcPath,
-      // },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        include: srcPath,
+        use: {
+          loader: 'eslint-loader',
+        },
+      },
       {
         test: /\.js$/,
         include: [
-          srcPath
+          srcPath,
         ],
         use: [
           {
@@ -61,4 +60,4 @@ module.exports = {
       },
     ],
   },
-}
+};
