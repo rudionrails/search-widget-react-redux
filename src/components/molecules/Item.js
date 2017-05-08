@@ -2,7 +2,6 @@ import React from 'react';
 import './Item.css';
 
 const Item = ({
-  id,
   title,
   url,
 }) => (
