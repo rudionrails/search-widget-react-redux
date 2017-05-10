@@ -1,6 +1,14 @@
 import 'whatwg-fetch';
 import config from 'src/config';
 
+const defaultFetchOptions = {
+  credentials: 'include',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+};
+
 async function parse({
   data: { relationships },
   included,
@@ -34,8 +42,9 @@ async function parse({
   return results;
 }
 
-async function get(params = {}) {
+async function get(options = {}) {
   const url = [config.hostname, config.pathname].join('/');
+  const params = Object.assign({}, defaultFetchOptions, options);
 
   try {
     const response = await fetch(url, params);
