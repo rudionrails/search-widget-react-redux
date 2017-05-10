@@ -92,7 +92,7 @@ module.exports = merge.smart(webpackBaseConfig, {
     }),
 
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('[name].[hash:7].css'),
 
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without

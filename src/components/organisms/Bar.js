@@ -18,24 +18,25 @@ class Bar extends React.Component {
 
   render() {
     return (
-      <div className={`Bar container-fluid ${this.props.className}`}>
-        <div className="row align-items-center">
-          <div className="col col-10 offset-1 col-md-8 offset-md-2">
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search"
-                ref={(input) => { this.searchInput = input; }}
-                value={this.props.query}
-                onChange={event => this.props.onSearch(event.target.value)} />
+      <div className={`Bar ${this.props.className}`}>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+              <div className="input-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Type for search..."
+                  ref={(input) => { this.searchInput = input; }}
+                  value={this.props.query}
+                  onChange={event => this.props.onSearch(event.target.value)} />
 
-              {this.props.isLoading &&
                 <span className="input-group-addon">
-                  <Loading />
-                </span>}
+                  {this.props.isLoading &&
+                    <Loading />}
+                </span>
+              </div>
             </div>
-
           </div>
         </div>
       </div>

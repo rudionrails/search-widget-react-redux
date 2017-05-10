@@ -41,7 +41,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: path.resolve(publicPath, 'img/[name].[hash:7].[ext]'),
+              name: 'assets/img/[name].[hash:7].[ext]',
             },
           },
         ],
@@ -53,7 +53,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: path.resolve(publicPath, 'fonts/[name].[hash:7].[ext]'),
+              name: 'assets/fonts/[name].[hash:7].[ext]',
             },
           },
         ],

@@ -1,4 +1,5 @@
 .Search {
+  z-index: 9999;
   transition: 0.2s ease;
 
   opacity: 0;
