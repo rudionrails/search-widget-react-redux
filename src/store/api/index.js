@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import { stringify } from 'qs';
 import config from 'src/config';
 
 const defaultFetchOptions = {
@@ -8,6 +9,16 @@ const defaultFetchOptions = {
     'Content-Type': 'application/json',
   },
 };
+
+function urlFor(params = {}) {
+  const url = [config.hostname, config.pathname].join('/');
+  const filter = stringify({ filter: params });
+
+  return [
+    url,
+    filter,
+  ].join('?');
+}
 
 async function parse({
   data: { relationships },
@@ -42,12 +53,12 @@ async function parse({
   return results;
 }
 
-async function get(options = {}) {
-  const url = [config.hostname, config.pathname].join('/');
-  const params = Object.assign({}, defaultFetchOptions, options);
+async function get(params = {}) {
+  const url = urlFor(params);
+  const options = Object.assign({}, defaultFetchOptions);
 
   try {
-    const response = await fetch(url, params);
+    const response = await fetch(url, options);
     const json = await response.json();
     const data = await parse(json);
 
