@@ -27,8 +27,6 @@ The embedding page needs to provide the following libraries:
 * [Open Sans Font](http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900,300italic,400italic)
 * [Bootstrap](https://github.com/twbs/bootstrap) ^4.0.0
 
-The app is generated with [create-react-app](https://github.com/facebookincubator/create-react-app)
-
 
 ## Development
 
