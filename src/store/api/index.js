@@ -11,11 +11,10 @@ const defaultFetchOptions = {
 };
 
 function urlFor(params = {}) {
-  const url = [config.hostname, config.pathname].join('/');
   const filter = stringify({ filter: params });
 
   return [
-    url,
+    config.endpoint,
     filter,
   ].join('?');
 }
@@ -43,8 +42,8 @@ async function parse({
     const data = relationships[key].data;
     const items = data.map(item => match(item));
     const list = items.map(item => select(item));
-    return {
 
+    return {
       title: key,
       list,
     };
@@ -63,8 +62,8 @@ async function get(params = {}) {
     const data = await parse(json);
 
     return data;
-  } catch (e) {
-    throw e;
+  } catch (error) {
+    throw error;
   }
 }
 

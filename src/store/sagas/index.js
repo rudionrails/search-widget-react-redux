@@ -12,8 +12,9 @@ export function* fetchSearch({
   try {
     const results = yield call(api.fetchSearch, query);
     yield put(actions.searchSuccess(results));
-  } catch (e) {
-    console.log('catch: ', e); // eslint-disable-line no-console
+  } catch (error) {
+    yield put(actions.searchFailure(error));
+    // console.log('catch: ', e); // eslint-disable-line no-console
   }
 }
 

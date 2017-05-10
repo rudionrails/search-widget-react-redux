@@ -1,6 +1,5 @@
 const config = {
-  hostname: 'http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io',
-  pathname: 'search',
+  endpoint: 'http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search',
 };
 
 export function configure(options = {}) {
