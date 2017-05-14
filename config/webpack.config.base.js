@@ -1,4 +1,5 @@
 const path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 // local config
 const rootPath = path.resolve(__dirname, '../');
@@ -59,4 +60,11 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new StyleLintPlugin({
+      context: 'src',
+      files: '**/*.css',
+    }),
+  ],
 };

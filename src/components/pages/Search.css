@@ -1,76 +1,71 @@
 .Search {
-  z-index: 9999;
-  transition: 0.2s ease;
-
+  background: rgb(237, 237, 237);
+  bottom: 0;
+  color: rgba(0, 0, 0, 0.9);
+  left: 0;
   opacity: 0;
   overflow: auto;
-
   position: fixed;
-  top: 0;
   right: 0;
-  bottom: 0;
-  left: 0;
-
-  color: rgba(0, 0, 0, 0.9);
-  background: rgb(237, 237, 237);
+  top: 0;
+  transition: 0.2s ease;
+  z-index: 9999;
 }
 
 .Search-close {
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  font-size: 200%;
+  opacity: 0;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
   transform: scale3d(0.2, 0.2, 1);
   transition: 0.4s ease;
-
-  opacity: 0;
-  cursor: pointer;
-  position: absolute;
   z-index: 1;
-  top: 1rem;
-  right: 1rem;
-
-  color: rgba(0, 0, 0, 0.3);
-  font-size: 200%;
 }
+
 .Search-close:hover {
   color: rgba(0, 0, 0, 0.5);
 }
+
 .Search-close i {
   font-size: inherit;
 }
 
 .Search-top {
+  background: rgb(88, 168, 248);
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  height: 30%;
   transform: translate3d(0, -10%, 0);
   transition: transform 0.3s ease;
-
   width: 100%;
-  height: 30%;
-
-  background: rgb(88, 168, 248);
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
-              0 1px 5px 0 rgba(0,0,0,0.12),
-              0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 .Search-bottom {
-  transform: translate3d(0, 10%, 0);
-  transition: transform 0.3s ease;
-
-  position: fixed;
-  top: 30%;
-  right: 0;
   bottom: 0;
   left: 0;
+  position: fixed;
+  right: 0;
+  top: 30%;
+  transform: translate3d(0, 10%, 0);
+  transition: transform 0.3s ease;
 }
 
 .Search.is-open {
-  pointer-events: auto;
   opacity: 1;
+  pointer-events: auto;
 }
 
 /**
 * Transitions
 */
 .Search.is-open .Search-close {
-  transform: scale3d(1, 1, 1);
   opacity: 1;
+  transform: scale3d(1, 1, 1);
 }
 
 .Search.is-open .Search-top {

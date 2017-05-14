@@ -2,7 +2,6 @@
 
 This Widget provides an easy-to-use fullscreen UI for a search interface.
 
-
 ## Usage
 
 ```javascript
@@ -25,7 +24,7 @@ The embedding page needs to provide the following libraries:
 
 * [Material Icon Font](http://fonts.googleapis.com/icon?family=Material+Icons)
 * [Open Sans Font](http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900,300italic,400italic)
-* [Bootstrap](https://github.com/twbs/bootstrap) ^4.0.0
+* [Bootstrap](https://github.com/twbs/bootstrap) ^3.3.0
 
 
 ## Development
@@ -38,7 +37,11 @@ Ensure you have installed (globally) the following software on your system:
 * [yarn](https://yarnpkg.com/) ^0.24.0
 * [watchman](https://facebook.github.io/watchman/docs/install.html) ^4.7.0
 
-### JavaScript Dependencies
+### Applied methodologies
+
+* [SUITCSS](http://suitcss.github.io/)
+
+### Setup
 
 Inside your local working directory:
 
@@ -58,6 +61,18 @@ $ yarn start
 
 ```sh
 $ yarn test
+```
+
+Or run it continuoiusly in the background
+
+```sh
+$ yarn test:watch
+```
+
+### Linting
+
+```sh
+$ yarn lint
 ```
 
 Copyright © Rudolf Schmidt, released under the MIT license
