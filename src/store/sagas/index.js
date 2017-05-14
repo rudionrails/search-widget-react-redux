@@ -14,7 +14,6 @@ export function* fetchSearch({
     yield put(actions.searchSuccess(results));
   } catch (error) {
     yield put(actions.searchFailure(error));
-    // console.log('catch: ', e); // eslint-disable-line no-console
   }
 }
 

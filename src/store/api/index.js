@@ -40,12 +40,12 @@ async function parse({
 
   const results = Object.keys(relationships).map((key) => {
     const data = relationships[key].data;
-    const items = data.map(item => match(item));
-    const list = items.map(item => select(item));
+    const items = data.map(item => match(item))
+                      .map(item => select(item));
 
     return {
       title: key,
-      list,
+      items,
     };
   });
 
