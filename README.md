@@ -34,8 +34,9 @@ The embedding page needs to provide the following libraries:
 
 Ensure you have installed (globally) the following software on your system:
 
-* [node.js](http://nodejs.org/) ^6.0.0
-* [yarn](https://yarnpkg.com/) ^0.19.1
+* [node.js](http://nodejs.org/) ^7.0.0
+* [yarn](https://yarnpkg.com/) ^0.24.0
+* [watchman](https://facebook.github.io/watchman/docs/install.html) ^4.7.0
 
 ### JavaScript Dependencies
 
