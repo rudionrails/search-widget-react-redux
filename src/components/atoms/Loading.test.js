@@ -2,6 +2,6 @@ import React from 'react';
 import { render } from 'enzyme';
 import Loading from './Loading';
 
-it('renders', () => {
+test('renders without failures', () => {
   render(<loading />);
 });

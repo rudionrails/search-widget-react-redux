@@ -8,7 +8,7 @@ class Bar extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     isLoading: PropTypes.bool,
-    query: PropTypes.string.isRequired,
+    query: PropTypes.string,
     onSearch: PropTypes.func.isRequired,
   }
 

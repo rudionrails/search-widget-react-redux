@@ -4,7 +4,6 @@ import { render, shallow } from 'enzyme';
 import Bar from './Bar';
 
 const props = {
-  query: 'The Query',
   onSearch: () => {},
 };
 
