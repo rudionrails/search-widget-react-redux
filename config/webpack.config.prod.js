@@ -31,8 +31,8 @@ module.exports = merge.smart(webpackBaseConfig, {
     // Generated JS file names (with nested folders).
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
-    filename: '[name].[chunkhash:8].js',
-    chunkFilename: '[name].[chunkhash:8].chunk.js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].chunk.js',
   },
 
   module: {
@@ -92,7 +92,7 @@ module.exports = merge.smart(webpackBaseConfig, {
     }),
 
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
-    new ExtractTextPlugin('[name].[hash:7].css'),
+    new ExtractTextPlugin('[name].[chunkhash].css'),
 
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
