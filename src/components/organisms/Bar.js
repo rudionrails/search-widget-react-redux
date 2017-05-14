@@ -7,7 +7,7 @@ import './Bar.css';
 class Bar extends React.Component {
   static propTypes = {
     className: PropTypes.string,
-    isLoading: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool,
     query: PropTypes.string.isRequired,
     onSearch: PropTypes.func.isRequired,
   }
@@ -27,7 +27,7 @@ class Bar extends React.Component {
                   type="text"
                   className="form-control"
                   placeholder="Type for search..."
-                  ref={(input) => { this.searchInput = input; }}
+                  ref={input => this.searchInput = input}
                   value={this.props.query}
                   onChange={event => this.props.onSearch(event.target.value)} />
 
