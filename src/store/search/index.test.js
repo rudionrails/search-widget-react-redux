@@ -2,7 +2,7 @@ import {
   types,
   actions,
   reducer,
-} from 'src/store/search';
+} from './index';
 
 describe('actions', () => {
   test('creates an action for search', () => {
