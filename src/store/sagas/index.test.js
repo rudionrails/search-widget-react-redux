@@ -1,10 +1,9 @@
-import td from 'testdouble';
 import { delay } from 'redux-saga';
 import { put, call, takeLatest } from 'redux-saga/effects';
 
-import rootSaga, { fetchSearch } from './index';
 import api from 'src/store/api';
 import { types, actions } from 'src/store/search';
+import rootSaga, { fetchSearch } from './index';
 
 test('rootSaga', () => {
   const gen = rootSaga();
@@ -17,36 +16,24 @@ test('rootSaga', () => {
   expect(gen.next().done).toBe(true);
 });
 
-test('fetchSearch without options', () => {
-  const gen = fetchSearch();
-
-  gen.next(); // delay
-  expect(gen.next().value).toEqual( // fetch data with default query value
-    call(api.fetchSearch, '')
-  );
-  gen.next(); // dispatch
-
-  expect(gen.next().done).toBe(true);
-});
-
 test('fetchSearch with { query } on success', () => {
   const query = 'The Query';
   const gen = fetchSearch({ query });
 
   // delay user input
   expect(gen.next().value).toEqual(
-    call(delay, 200)
+    call(delay, 200),
   );
 
   // fetch data from API
   expect(gen.next().value).toEqual(
-    call(api.fetchSearch, query)
+    call(api.fetchSearch, query),
   );
 
   // dispatch SEARCH_SUCCESS action
   const results = [1, 2, 3];
   expect(gen.next(results).value).toEqual(
-    put(actions.searchSuccess(results))
+    put(actions.searchSuccess(results)),
   );
 
   // done
@@ -59,15 +46,27 @@ test('fetchSearch whth { query } on failure', () => {
 
   // delay user input
   expect(gen.next().value).toEqual(
-    call(delay, 200)
+    call(delay, 200),
   );
 
   // fetch data from API raises
   const error = new Error();
   expect(gen.throw(error).value).toEqual(
-    put(actions.searchFailure(error))
+    put(actions.searchFailure(error)),
   );
 
   // done
+  expect(gen.next().done).toBe(true);
+});
+
+test('fetchSearch without options', () => {
+  const gen = fetchSearch();
+
+  gen.next(); // delay
+  expect(gen.next().value).toEqual( // fetch data with default query value
+    call(api.fetchSearch, ''),
+  );
+  gen.next(); // dispatch
+
   expect(gen.next().done).toBe(true);
 });
