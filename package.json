@@ -69,8 +69,10 @@
     "deploy": "surge ./build/ search-widget-react-redux.surge.sh",
     "build-n-deploy": "yarn build && yarn deploy",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "eslint . --ignore-path .gitignore",
+    "test:watch": "yarn test -- --watch --onlyChanged",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint . --ignore-path .gitignore --cache",
+    "lint:css": "stylelint src/**/*.css",
     "validate": "npm-run-all --parallel lint test"
   },
   "pre-push": {
