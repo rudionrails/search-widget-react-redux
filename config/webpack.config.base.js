@@ -3,7 +3,6 @@ const path = require('path');
 // local config
 const rootPath = path.resolve(__dirname, '../');
 const srcPath = path.resolve(rootPath, 'src');
-const publicPath = path.resolve(rootPath, 'public');
 
 module.exports = {
   resolve: {
