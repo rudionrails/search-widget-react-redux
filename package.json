@@ -70,6 +70,7 @@
     "build-n-deploy": "yarn build && yarn deploy",
     "test": "jest",
     "test:watch": "yarn test -- --watch --onlyChanged",
+    "test:coverage": "yarn test -- --coverage",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:js": "eslint . --ignore-path .gitignore --cache",
     "lint:css": "stylelint src/**/*.css",
