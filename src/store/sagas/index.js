@@ -7,9 +7,9 @@ import { types, actions } from 'src/store/search';
 export function* fetchSearch({
   query = '',
 } = {}) {
-  yield call(delay, 200);
-
   try {
+    yield call(delay, 200);
+
     const results = yield call(api.fetchSearch, query);
     yield put(actions.searchSuccess(results));
   } catch (error) {
@@ -17,7 +17,7 @@ export function* fetchSearch({
   }
 }
 
-export default function* sagas() {
+export default function* rootSaga() {
   yield [
     takeLatest(types.SEARCH, fetchSearch),
   ];
