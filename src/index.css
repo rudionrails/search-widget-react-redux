@@ -6,9 +6,6 @@
 }
 
 #main.is-hidden {
-  /* opacity: 0.2; */
-  /* transform: scale3d(0.8, 0.8, 1); */
-
-  /* transform: scale3d(0.95, 0.95, 1); */
-  /* filter: blur(3px); */
+  opacity: 0.2;
+  transform: scale3d(0.8, 0.8, 1);
 }

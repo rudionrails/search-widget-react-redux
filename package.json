@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "debug": "^2.6.6",
+    "dotenv": "^4.0.0",
     "prop-types": "^15.5.8",
     "qs": "^6.4.0",
     "react": "^15.5.4",
@@ -55,6 +57,11 @@
     "react-dev-utils": "^0.5.2",
     "react-test-renderer": "^15.5.4",
     "style-loader": "^0.17.0",
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-order": "^0.4.4",
+    "stylelint-selector-bem-pattern": "^1.0.0",
+    "stylelint-webpack-plugin": "^0.7.0",
     "surge": "^0.19.0",
     "testdouble": "^2.1.2",
     "url-loader": "^0.5.8",
@@ -64,13 +71,15 @@
     "webpack-merge": "^4.1.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.config.dev.js --progress",
+    "start": "node -r dotenv/config -- ./node_modules/.bin/webpack-dev-server --config config/webpack.config.dev.js --progress",
     "build": "rm -rf ./build/* && webpack --config config/webpack.config.prod.js --progress --colors",
     "deploy": "surge ./build/ search-widget-react-redux.surge.sh",
     "build-n-deploy": "yarn build && yarn deploy",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "eslint . --ignore-path .gitignore",
+    "test:watch": "yarn test -- --watch",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint . --ignore-path .gitignore --cache",
+    "lint:css": "stylelint src/**/*.css",
     "validate": "npm-run-all --parallel lint test"
   },
   "pre-push": {
