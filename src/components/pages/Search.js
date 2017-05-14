@@ -21,17 +21,19 @@ const Search = ({
       className="Search-top"
       isLoading={isLoading}
       query={query}
-      onSearch={onSearch} />
+      onSearch={onSearch}
+    />
 
     <Results
       className="Search-bottom"
-      results={results} />
+      results={results}
+    />
   </div>
 );
 
 Search.propTypes = {
   isLoading: PropTypes.bool,
-  query: PropTypes.string.isRequired,
+  query: PropTypes.string,
   results: PropTypes.array.isRequired,
   onSearch: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
