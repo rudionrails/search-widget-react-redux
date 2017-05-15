@@ -7,11 +7,11 @@ const Item = ({
   title,
   url,
 }) => (
-  <div className="Item panel">
+  <div className="sw-Item panel">
     <div className="panel-body">
       <div className="media">
         <div className="media-left">
-          <i className="Item-avatar material-icons media-object">account_circle</i>
+          <i className="sw-Item-avatar material-icons media-object">account_circle</i>
         </div>
 
         <div className="media-body">
