@@ -1,4 +1,4 @@
-.Search {
+.sw-Search {
   background: rgb(237, 237, 237);
   bottom: 0;
   color: rgba(0, 0, 0, 0.9);
@@ -10,9 +10,14 @@
   top: 0;
   transition: 0.2s ease;
   z-index: 9999;
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
-.Search-close {
+.sw-Search-close {
   color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-size: 200%;
@@ -23,17 +28,17 @@
   transform: scale3d(0.2, 0.2, 1);
   transition: 0.4s ease;
   z-index: 1;
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  i {
+    font-size: inherit;
+  }
 }
 
-.Search-close:hover {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.Search-close i {
-  font-size: inherit;
-}
-
-.Search-top {
+.sw-Search-top {
   background: rgb(88, 168, 248);
   box-shadow:
     0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -45,33 +50,23 @@
   width: 100%;
 }
 
-.Search-bottom {
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 30%;
+.sw-Search-bottom {
   transform: translate3d(0, 10%, 0);
   transition: transform 0.3s ease;
-}
-
-.Search.is-open {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 /**
 * Transitions
 */
-.Search.is-open .Search-close {
+.sw-Search.is-open .sw-Search-close {
   opacity: 1;
   transform: scale3d(1, 1, 1);
 }
 
-.Search.is-open .Search-top {
+.sw-Search.is-open .sw-Search-top {
   transform: translate3d(0, 0, 0);
 }
 
-.Search.is-open .Search-bottom {
+.sw-Search.is-open .sw-Search-bottom {
   transform: translate3d(0, 0, 0);
 }
