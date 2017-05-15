@@ -29,7 +29,7 @@ test('renders Results', () => {
 test('triggers onClose when pressing the close button', () => {
   const onClose = td.function('onClose');
   const search = shallow(<Search { ...props } onClose={onClose} />);
-  const closeButton = search.find('.Search-close');
+  const closeButton = search.find('.sw-Search-close');
 
   closeButton.simulate('click');
   td.verify(onClose());
