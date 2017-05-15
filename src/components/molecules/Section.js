@@ -9,8 +9,8 @@ const Section = ({
   title,
   items,
 }) => (
-  <div className={`Section col-sm-${width}`}>
-    <h5 className="Section-title">{ title }</h5>
+  <div className={`sw-Section col-sm-${width}`}>
+    <h5 className="sw-Section-title">{ title }</h5>
 
     {items.map(item =>
       <Item
