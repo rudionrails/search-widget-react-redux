@@ -9,7 +9,7 @@ const Results = ({
   const width = Math.floor(12 / results.length);
 
   return (
-    <div className={`Results ${className}`}>
+    <div className={`sw-Results ${className}`}>
       <div className="container-fluid">
         <div className="row">
           {results.map(result =>
