@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -16,7 +15,7 @@ const publicPath = path.resolve(rootPath, 'public');
 const ADDRESS = 'http://127.0.0.1:8080';
 
 module.exports = merge.smart(webpackBaseConfig, {
-  devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   entry: [
     'babel-polyfill',
@@ -29,33 +28,10 @@ module.exports = merge.smart(webpackBaseConfig, {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins() {
-                return [
-                  autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // React doesn't support IE8 anyway
-                    ],
-                  }),
-                ];
-              },
-            },
-          },
-        ],
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          'postcss-loader',
+        ]
       },
     ],
   },
@@ -96,6 +72,7 @@ module.exports = merge.smart(webpackBaseConfig, {
     // Synchronized browser testing
     // https://www.browsersync.io/
     new BrowserSyncPlugin({
+      open: false,
       proxy: ADDRESS,
     }, { // Plugin options
       reload: false,

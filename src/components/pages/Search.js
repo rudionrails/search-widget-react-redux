@@ -12,20 +12,20 @@ const Search = ({
   onSearch,
   onClose,
 }) => (
-  <div className="Search">
-    <div className="Search-close" onClick={onClose}>
+  <div className="sw-Search">
+    <div className="sw-Search-close" onClick={onClose}>
       <i className="material-icons">clear</i>
     </div>
 
     <Bar
-      className="Search-top"
+      className="sw-Search-top"
       isLoading={isLoading}
       query={query}
       onSearch={onSearch}
     />
 
     <Results
-      className="Search-bottom"
+      className="sw-Search-bottom"
       results={results}
     />
   </div>
