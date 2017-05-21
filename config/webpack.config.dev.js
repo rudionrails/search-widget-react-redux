@@ -37,6 +37,13 @@ module.exports = merge.smart(webpackBaseConfig, {
   },
 
   plugins: [
+    // set env variables
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
+
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       template: path.resolve(publicPath, 'index.html'),

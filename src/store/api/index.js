@@ -1,5 +1,5 @@
-import 'whatwg-fetch';
 import { stringify } from 'qs';
+import { fetch } from 'src/helpers/browser';
 import config from 'src/config';
 
 const defaultFetchOptions = {
@@ -14,7 +14,7 @@ function urlFor(params = {}) {
   const filter = stringify({ filter: params });
 
   return [
-    config.endpoint,
+    config.apiUrl,
     filter,
   ].join('?');
 }
