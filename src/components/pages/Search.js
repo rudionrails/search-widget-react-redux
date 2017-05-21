@@ -5,38 +5,57 @@ import Bar from 'src/components/organisms/Bar';
 import Results from 'src/components/organisms/Results';
 import './Search.css';
 
-const Search = ({
-  isLoading,
-  query,
-  results,
-  onSearch,
-  onClose,
-}) => (
-  <div className="sw-Search">
-    <div className="sw-Search-close" onClick={onClose}>
-      <i className="material-icons">clear</i>
-    </div>
+class Search extends React.Component {
+  static propTypes = {
+    isLoading: PropTypes.bool,
+    query: PropTypes.string,
+    results: PropTypes.array.isRequired,
+    onSearch: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
+  }
 
-    <Bar
-      className="sw-Search-top"
-      isLoading={isLoading}
-      query={query}
-      onSearch={onSearch}
-    />
+  static childContextTypes = {
+    onClick: PropTypes.func.isRequired,
+  };
 
-    <Results
-      className="sw-Search-bottom"
-      results={results}
-    />
-  </div>
-);
+  getChildContext() {
+    return {
+      onClick: this.props.onClick,
+    };
+  }
 
-Search.propTypes = {
-  isLoading: PropTypes.bool,
-  query: PropTypes.string,
-  results: PropTypes.array.isRequired,
-  onSearch: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
+  render() {
+    const {
+      isLoading,
+      query,
+      onClose,
+      onSearch,
+      onClick,
+      results,
+    } = this.props;
+
+    return (
+      <div className="sw-Search">
+        <div className="sw-Search-close" onClick={onClose}>
+          <i className="material-icons">clear</i>
+      </div>
+
+      <Bar
+        className="sw-Search-top"
+        isLoading={isLoading}
+        query={query}
+        onSearch={onSearch}
+      />
+
+      <Results
+        className="sw-Search-bottom"
+        onClick={onClick}
+        results={results}
+      />
+      </div>
+    );
+  }
+}
 
 export default Search;

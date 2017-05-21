@@ -3,6 +3,8 @@ import { put, call, takeLatest } from 'redux-saga/effects';
 
 import api from 'src/store/api';
 import { types, actions } from 'src/store/search';
+
+// module under test
 import rootSaga, { fetchSearch } from './index';
 
 test('rootSaga', () => {

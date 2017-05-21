@@ -1,8 +1,5 @@
-import {
-  types,
-  actions,
-  reducer,
-} from './index';
+// module under test
+import { types, actions, reducer } from './index';
 
 describe('actions', () => {
   test('creates an action for search', () => {

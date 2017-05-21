@@ -1,5 +1,7 @@
 import React from 'react';
 import { render, shallow } from 'enzyme';
+
+// module under test
 import Section from './Section';
 
 const props = {
@@ -19,6 +21,7 @@ test('renders the title', () => {
 test('does not render items when empty', () => {
   const section = shallow(<Section { ...props } />);
   const items = section.find('Item');
+
   expect(items.length).toBe(0);
 });
 

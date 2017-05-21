@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const webpackBaseConfig = require('./webpack.config.base');
 
@@ -50,6 +51,7 @@ module.exports = merge.smart(webpackBaseConfig, {
   },
 
   plugins: [
+    // set env variables
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -92,6 +94,12 @@ module.exports = merge.smart(webpackBaseConfig, {
         screw_ie8: true,
       },
     }),
+
+    // cope static assets
+    new CopyWebpackPlugin([{
+      from: 'public/*.css',
+      flatten: true,
+    }]),
 
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin('[name].[chunkhash].css'),

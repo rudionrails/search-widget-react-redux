@@ -1,5 +1,7 @@
 import React from 'react';
 import { render, shallow } from 'enzyme';
+
+// module under test
 import Results from './Results';
 
 const props = {
@@ -13,7 +15,8 @@ test('renders without failures', () => {
 test('does not render sections when results are empty', () => {
   const results = shallow(<Results { ...props } />);
   const sections = results.find('Section');
-  expect(sections.length).toBe(0);
+
+  expect(sections.exists()).toBe(false);
 });
 
 test('renders sections when results are present', () => {
