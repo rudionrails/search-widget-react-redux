@@ -36,16 +36,16 @@ describe('a router instance', () => {
   test('navigate changes pushState', () => {
     const pushState = td.replace(history, 'pushState');
     router.navigate('/foo-bar#/baz');
-  
+
     td.verify(pushState(undefined, undefined, '/foo-bar#/baz'));
   });
 
   test('navigate changes location (redirect)', () => {
     const assign = td.replace(Object, 'assign');
     router.navigate('http://www.example.com/foo-bar#/baz');
-    
+
     td.verify(
-      assign(location, { href: 'http://www.example.com/foo-bar#/baz' })
+      assign(location, { href: 'http://www.example.com/foo-bar#/baz' }),
     );
   });
 });

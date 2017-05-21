@@ -1,19 +1,18 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render } from 'enzyme';
 
 // module under test
-import Search, { mapStateToProps, mapDispatchToProps } from './Search';
+import Search from './Search';
 
 const store = {
   subscribe: Function.prototype,
   dispatch: Function.prototype,
   getState: () => ({
-    search: 
-    {
+    search: {
       isLoading: false,
       query: 'The Query',
       results: [],
-    }
+    },
   }),
 };
 

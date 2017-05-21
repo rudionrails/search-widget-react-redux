@@ -19,7 +19,7 @@ describe('configure', () => {
   test('assigns value to config', () => {
     const assign = td.replace(Object, 'assign');
     configure({ foo: 'bar' });
-  
+
     td.verify(assign(config, { foo: 'bar' }));
   });
 
@@ -27,6 +27,6 @@ describe('configure', () => {
     const assign = td.replace(Object, 'assign');
 
     configure({ foo: undefined });
-    td.verify(assign(), {times: 0, ignoreExtraArgs: true});
+    td.verify(assign(), { times: 0, ignoreExtraArgs: true });
   });
 });
