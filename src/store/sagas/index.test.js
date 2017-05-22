@@ -7,6 +7,14 @@ import { types, actions } from 'src/store/search';
 // module under test
 import rootSaga, { fetchSearch } from './index';
 
+test('exports a default rootSaga function', () => {
+  expect(typeof rootSaga).toBe('function');
+});
+
+test('export a configure function', () => {
+  expect(typeof fetchSearch).toBe('function');
+});
+
 test('rootSaga', () => {
   const gen = rootSaga();
 

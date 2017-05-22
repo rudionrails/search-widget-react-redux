@@ -13,31 +13,32 @@ export default function create({
   open = Function.prototype,
   close = Function.prototype,
 } = {}) {
-  function handleLocationChange() {
+  async function handleLocationChange() {
     if (location.hash === config.triggerRoute) {
-      open();
+      await open();
     } else {
-      close();
+      await close();
     }
   }
 
+  // initialization
+  addEventListener('popstate', handleLocationChange);
+  handleLocationChange();
+
   // public interface
-  function navigate(path) {
+  async function navigate(path) {
     if (path.startsWith('http')) {
+      await close();
       Object.assign(location, { href: path });
     } else {
-      history.pushState(undefined, undefined, path);
-      handleLocationChange();
+      await history.pushState(undefined, undefined, path);
+      await handleLocationChange();
     }
   }
 
   function destroy() {
     removeEventListener('popstate', handleLocationChange);
   }
-
-  // initialization
-  addEventListener('popstate', handleLocationChange);
-  handleLocationChange();
 
   return Object.freeze({
     navigate,

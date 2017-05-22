@@ -1,5 +1,21 @@
 // module under test
-import { types, actions, reducer } from './index';
+import {
+  types,
+  actions,
+  reducer
+} from './index';
+
+test('exports a types object', () => {
+  expect(typeof types).toBe('object');
+});
+
+test('export a actions object', () => {
+  expect(typeof actions).toBe('object');
+});
+
+test('export a reducer function', () => {
+  expect(typeof reducer).toBe('function');
+});
 
 describe('actions', () => {
   test('creates an action for search', () => {

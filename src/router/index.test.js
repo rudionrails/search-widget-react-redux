@@ -33,16 +33,20 @@ describe('a router instance', () => {
     expect(typeof router.destroy).toBe('function');
   });
 
-  test('navigate changes pushState', () => {
+  test('instance.navigate is availabl', () => {
+    expect(typeof router.navigate).toBe('function');
+  });
+
+  test('navigate changes pushState', async () => {
     const pushState = td.replace(history, 'pushState');
-    router.navigate('/foo-bar#/baz');
+    await router.navigate('/foo-bar#/baz');
 
     td.verify(pushState(undefined, undefined, '/foo-bar#/baz'));
   });
 
-  test('navigate changes location (redirect)', () => {
+  test('navigate changes location (redirect)', async () => {
     const assign = td.replace(Object, 'assign');
-    router.navigate('http://www.example.com/foo-bar#/baz');
+    await router.navigate('http://www.example.com/foo-bar#/baz');
 
     td.verify(
       assign(location, { href: 'http://www.example.com/foo-bar#/baz' }),
