@@ -21,7 +21,7 @@ test('rootSaga', () => {
   expect(gen.next().value).toEqual(
     all([
       takeLatest(types.SEARCH, fetchSearch),
-    ])
+    ]),
   );
 
   // done

@@ -2,7 +2,7 @@
 import {
   types,
   actions,
-  reducer
+  reducer,
 } from './index';
 
 test('exports a types object', () => {

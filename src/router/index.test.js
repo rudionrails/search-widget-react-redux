@@ -1,5 +1,5 @@
 import td from 'testdouble';
-import { location, history, } from 'src/helpers/browser';
+import { location, history } from 'src/helpers/browser';
 import config from 'src/config';
 
 // module under test

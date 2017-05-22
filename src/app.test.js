@@ -1,5 +1,3 @@
-import React from 'react';
-
 // module under test
 import create from './app';
 
