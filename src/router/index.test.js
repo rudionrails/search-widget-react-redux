@@ -1,9 +1,6 @@
 import td from 'testdouble';
-
-import {
-  location,
-  history,
-} from 'src/helpers/browser';
+import { location, history, } from 'src/helpers/browser';
+import config from 'src/config';
 
 // module under test
 import create from './index';
@@ -51,5 +48,17 @@ describe('a router instance', () => {
     td.verify(
       assign(location, { href: 'http://www.example.com/foo-bar#/baz' }),
     );
+  });
+
+  test('navigate to config.triggerRoute calls open', async () => {
+    await router.navigate(config.triggerRoute);
+
+    td.verify(open());
+  });
+
+  test('navigate to not config.triggerRoute calls close', async () => {
+    await router.navigate(`${config.triggerRoute}-not`);
+
+    td.verify(close());
   });
 });

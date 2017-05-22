@@ -10,9 +10,9 @@ import {
 } from 'src/helpers/browser';
 
 export default function create({
-  open = Function.prototype,
-  close = Function.prototype,
-} = {}) {
+  open,
+  close,
+}) {
   async function handleLocationChange() {
     if (location.hash === config.triggerRoute) {
       await open();
