@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import api from 'src/store/api';
 import { types, actions } from 'src/store/search';
@@ -18,7 +18,7 @@ export function* fetchSearch({
 }
 
 export default function* rootSaga() {
-  yield [
+  yield all([
     takeLatest(types.SEARCH, fetchSearch),
-  ];
+  ]);
 }

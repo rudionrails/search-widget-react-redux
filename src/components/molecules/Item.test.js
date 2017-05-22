@@ -11,7 +11,7 @@ const props = {
 };
 
 const context = {
-  onClick: Function.prototype,
+  onClick: td.function('.onClick'),
 };
 
 afterEach(() => {
@@ -34,5 +34,7 @@ test('renders the url', () => {
 
 test('triggers onCLick', () => {
   const item = shallow(<Item { ...props } />, { context });
-  expect(item.text()).toContain(props.url);
+  item.simulate('click');
+
+  td.verify(context.onClick(props.url));
 });

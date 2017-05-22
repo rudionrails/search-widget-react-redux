@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import { setTimeout } from 'src/helpers/browser';
 import config, { configure } from 'src/config';
 import createStore from 'src/store';
 import createRouter from 'src/router';
@@ -25,10 +26,10 @@ function openEventListener(event) {
   router.navigate(config.triggerRoute);
 }
 
-function open() {
-  if (container) return Promise.resolve();
+async function open() {
+  if (container) return;
 
-  return new Promise((resolve) => {
+  await new Promise((resolve) => {
     // handle event listeners
     document.addEventListener('keydown', closeEventListener);
     document.removeEventListener('keydown', openEventListener);
@@ -47,26 +48,26 @@ function open() {
       container,
       () => resolve(),
     );
-  }).then(() => {
-    /**
-    * Use setTimeout to place the operation into the
-    * event loop (outside the stack) --R
-    */
-    setTimeout(() => {
-      const DOMNode = ReactDOM.findDOMNode(container);
-      DOMNode.firstChild.classList.add('is-open');
-
-      // hide main
-      main = document.getElementById('main');
-      if (main) main.classList.add('is-hidden');
-    }, 17);
   });
+
+  /**
+  * Use setTimeout to place the operation into the
+  * event loop (outside the stack) --R
+  */
+  await setTimeout(() => {
+    const DOMNode = ReactDOM.findDOMNode(container);
+    DOMNode.firstChild.classList.add('is-open');
+
+    // hide main
+    main = document.getElementById('main');
+    if (main) main.classList.add('is-hidden');
+  }, 17);
 }
 
-function close() {
-  if (!container) return Promise.resolve();
+async function close() {
+  if (!container) return;
 
-  return new Promise((resolve) => {
+  await new Promise((resolve) => {
     // handle event listeners
     document.removeEventListener('keydown', closeEventListener);
     document.addEventListener('keydown', openEventListener);
@@ -79,21 +80,21 @@ function close() {
     if (main) main.classList.remove('is-hidden');
 
     // wait for CSS animation to complete
-    setTimeout(() => resolve(), 300);
-  }).then(() => {
-    // unmount the app
-    ReactDOM.unmountComponentAtNode(container);
-    document.body.removeChild(container);
-
-    container = undefined;
+    setTimeout(() => resolve(), 250);
   });
+
+  // unmount the app
+  ReactDOM.unmountComponentAtNode(container);
+  document.body.removeChild(container);
+
+  container = undefined;
 }
 
 function create({
   triggerRoute,
   triggerKey,
   apiUrl,
-}) {
+} = {}) {
   if (store) throw new Error('already created');
 
   // setup config
@@ -109,7 +110,7 @@ function create({
     document.removeEventListener('keydown', openEventListener);
 
     router.destroy();
-    store.destroy();
+    // store.destroy();
 
     router = undefined;
     store = undefined;

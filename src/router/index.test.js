@@ -33,7 +33,7 @@ describe('a router instance', () => {
     expect(typeof router.destroy).toBe('function');
   });
 
-  test('instance.navigate is availabl', () => {
+  test('instance.navigate is available', () => {
     expect(typeof router.navigate).toBe('function');
   });
 

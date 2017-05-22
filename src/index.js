@@ -1,3 +1,4 @@
+import { window } from 'src/helpers/browser';
 import create from 'src/app';
 
 const SearchWidget = Object.freeze({

@@ -4,7 +4,7 @@ const config = {
   apiUrl: undefined, // http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search
 };
 
-export function configure(options = {}) {
+export function configure(options) {
   Object.keys(options).forEach((key) => {
     if (typeof options[key] === 'undefined') return;
 

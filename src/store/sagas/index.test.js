@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga';
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { all, put, call, takeLatest } from 'redux-saga/effects';
 
 import api from 'src/store/api';
 import { types, actions } from 'src/store/search';
@@ -18,9 +18,11 @@ test('export a configure function', () => {
 test('rootSaga', () => {
   const gen = rootSaga();
 
-  expect(gen.next().value).toEqual([
-    takeLatest(types.SEARCH, fetchSearch),
-  ]);
+  expect(gen.next().value).toEqual(
+    all([
+      takeLatest(types.SEARCH, fetchSearch),
+    ])
+  );
 
   // done
   expect(gen.next().done).toBe(true);

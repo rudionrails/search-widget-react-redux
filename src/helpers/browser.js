@@ -11,4 +11,5 @@ export {
 
   addEventListener,
   removeEventListener,
+  setTimeout,
 };
