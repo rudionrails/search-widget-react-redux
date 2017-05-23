@@ -1,5 +1,7 @@
-/* global window, document, history, location, addEventListener */
-/* global removeEventListener, fetch, Event */
+/* global window, document, history, location, */
+/* global addEventListener, removeEventListener */
+/* global setTimeout */
+
 import 'whatwg-fetch';
 
 export {
