@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
-import { actions } from 'src/store/search';
+import { actions } from 'src/store/redux/search';
 import Search from 'src/components/pages/Search';
 
 const mapStateToProps = state => ({
-  isLoading: state.search.isLoading,
+  isLoading: state.loading,
   query: state.search.query,
   results: state.search.results,
 });

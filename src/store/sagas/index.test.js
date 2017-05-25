@@ -2,7 +2,13 @@ import { delay } from 'redux-saga';
 import { all, put, call, takeLatest } from 'redux-saga/effects';
 
 import api from 'src/store/api';
-import { types, actions } from 'src/store/search';
+import {
+  types as searchTypes,
+  actions as searchActions,
+} from 'src/store/redux/search';
+import {
+  actions as loadingActions,
+} from 'src/store/redux/loading';
 
 // module under test
 import rootSaga, { fetchSearch } from './index';
@@ -20,7 +26,7 @@ test('rootSaga', () => {
 
   expect(gen.next().value).toEqual(
     all([
-      takeLatest(types.SEARCH, fetchSearch),
+      takeLatest(searchTypes.SEARCH, fetchSearch),
     ]),
   );
 
@@ -31,6 +37,11 @@ test('rootSaga', () => {
 test('fetchSearch with { query } on success', () => {
   const query = 'The Query';
   const gen = fetchSearch({ query });
+
+  // loading start
+  expect(gen.next().value).toEqual(
+    put(loadingActions.start()),
+  );
 
   // delay user input
   expect(gen.next().value).toEqual(
@@ -45,26 +56,12 @@ test('fetchSearch with { query } on success', () => {
   // dispatch SEARCH_SUCCESS action
   const results = [1, 2, 3];
   expect(gen.next(results).value).toEqual(
-    put(actions.searchSuccess(results)),
+    put(searchActions.searchSuccess(results)),
   );
 
-  // done
-  expect(gen.next().done).toBe(true);
-});
-
-test('fetchSearch whth { query } on failure', () => {
-  const query = 'The Query';
-  const gen = fetchSearch({ query });
-
-  // delay user input
+  // loading stop
   expect(gen.next().value).toEqual(
-    call(delay, 200),
-  );
-
-  // fetch data from API raises
-  const error = new Error();
-  expect(gen.throw(error).value).toEqual(
-    put(actions.searchFailure(error)),
+    put(loadingActions.stop()),
   );
 
   // done
@@ -74,11 +71,37 @@ test('fetchSearch whth { query } on failure', () => {
 test('fetchSearch without options', () => {
   const gen = fetchSearch();
 
+  gen.next(); // loading start
   gen.next(); // delay
   expect(gen.next().value).toEqual( // fetch data with default query value
     call(api.fetchSearch, ''),
   );
-  gen.next(); // dispatch
+  gen.next(); // dispatch SEARCH_SUCCESS
+  gen.next(); // loading stop
 
+  expect(gen.next().done).toBe(true);
+});
+
+test('fetchSearch whth { query } on failure', () => {
+  const query = 'The Query';
+  const gen = fetchSearch({ query });
+
+  // loading start
+  expect(gen.next().value).toEqual(
+    put(loadingActions.start()),
+  );
+
+  // simulate exception
+  const error = new Error();
+  expect(gen.throw(error).value).toEqual(
+    put(searchActions.searchFailure(error)),
+  );
+
+  // loading stop
+  expect(gen.next().value).toEqual(
+    put(loadingActions.stop()),
+  );
+
+  // done
   expect(gen.next().done).toBe(true);
 });

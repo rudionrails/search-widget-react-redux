@@ -1,9 +1,5 @@
 // module under test
-import {
-  types,
-  actions,
-  reducer,
-} from './index';
+import { types, actions, reducer } from './index';
 
 test('exports a types object', () => {
   expect(typeof types).toBe('object');
@@ -52,7 +48,6 @@ describe('reducer', () => {
     const state = reducer(undefined, {});
 
     expect(state).toEqual({
-      isLoading: false,
       query: '',
       results: [],
     });
@@ -66,7 +61,6 @@ describe('reducer', () => {
     });
 
     expect(state).toEqual({
-      isLoading: true,
       query,
       results: [],
     });
@@ -75,7 +69,6 @@ describe('reducer', () => {
   test('handles SEARCH_SUCCESS', () => {
     const results = 'The Results';
     const state = reducer({
-      isLoading: 'will-change',
       query: 'unchanged',
       results: 'will-change',
     }, {
@@ -84,7 +77,6 @@ describe('reducer', () => {
     });
 
     expect(state).toEqual({
-      isLoading: false,
       query: 'unchanged',
       results,
     });
@@ -92,7 +84,6 @@ describe('reducer', () => {
 
   test('handles SEARCH_FAILURE', () => {
     const state = reducer({
-      isLoading: 'will-change',
       query: 'unchanged',
       results: 'will-change',
     }, {
@@ -100,7 +91,6 @@ describe('reducer', () => {
     });
 
     expect(state).toEqual({
-      isLoading: false,
       query: 'unchanged',
       results: [],
     });

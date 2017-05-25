@@ -9,16 +9,17 @@ const store = {
   dispatch: Function.prototype,
   getState: () => ({
     search: {
-      isLoading: false,
       query: 'The Query',
       results: [],
     },
+    loading: false,
   }),
 };
 
 const props = {
   onClick: Function.prototype,
   onClose: Function.prototype,
+  onSearch: Function.prototype,
   store,
 };
 
