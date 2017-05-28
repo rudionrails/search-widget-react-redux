@@ -1,6 +1,5 @@
-/* global window, document, history, location, */
-/* global addEventListener, removeEventListener */
-/* global setTimeout */
+/* global window, document, history, location, localStorage */
+/* global addEventListener, removeEventListener, setTimeout */
 
 import 'whatwg-fetch';
 
@@ -9,9 +8,11 @@ export {
   document,
   history,
   location,
-  fetch,
+  localStorage,
 
   addEventListener,
   removeEventListener,
   setTimeout,
+
+  fetch,
 };
