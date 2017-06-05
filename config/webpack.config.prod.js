@@ -77,25 +77,18 @@ module.exports = merge.smart(webpackBaseConfig, {
       },
     }),
 
-    // This helps ensure the builds are consistent if source hasn't changed:
-    new webpack.optimize.OccurrenceOrderPlugin(),
-
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        screw_ie8: true, // React doesn't support IE8
         warnings: false,
-      },
-      mangle: {
-        screw_ie8: true,
       },
       output: {
         comments: false,
-        screw_ie8: true,
       },
+      sourceMap: true,
     }),
 
-    // cope static assets
+    // copy static assets
     new CopyWebpackPlugin([{
       from: 'public/*.css',
       flatten: true,
@@ -107,8 +100,21 @@ module.exports = merge.smart(webpackBaseConfig, {
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
-    new ManifestPlugin({
-      fileName: 'asset-manifest.json',
+    new ManifestPlugin(),
+
+    // split vendor js into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module, count) {
+        // any required modules inside node_modules are extracted to vendor
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf(
+            path.join(__dirname, '../node_modules')
+          ) === 0
+        );
+      },
     }),
   ],
 });

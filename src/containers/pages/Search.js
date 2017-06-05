@@ -4,7 +4,7 @@ import { actions } from 'src/store/redux/search';
 import Search from 'src/components/pages/Search';
 
 const mapStateToProps = state => ({
-  isLoading: state.loading,
+  isLoading: state.loading.isLoading,
   query: state.search.query,
   results: state.search.results,
 });

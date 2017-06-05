@@ -32,11 +32,7 @@ async function parse({
     id,
     attributes: { title },
     links: { self },
-  }) => ({
-    id,
-    title,
-    url: self,
-  });
+  }) => ({ id, title, url: self });
 
   const results = Object.keys(relationships).map((key) => {
     const data = relationships[key].data;

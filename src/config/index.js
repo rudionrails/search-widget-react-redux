@@ -2,6 +2,7 @@ const config = {
   triggerRoute: '#/finder', // unsed to mount the app via window.location
   triggerKey: 'F', // used to mount the app via keypress
   apiUrl: undefined, // http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search
+  localStorageKey: 'search-widget-react-redux', // used to identity data in localstorage
 };
 
 export function configure(options) {
