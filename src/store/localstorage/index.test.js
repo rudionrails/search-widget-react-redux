@@ -30,7 +30,7 @@ describe('get', () => {
 
   test('returns undefined upon Error', () => {
     const getItem = td.replace(localStorage, 'getItem');
-    td.when(get()).thenThrow(new Error('foo'))
+    td.when(getItem()).thenThrow(new Error('foo'));
 
     expect(get()).toEqual(undefined);
   });

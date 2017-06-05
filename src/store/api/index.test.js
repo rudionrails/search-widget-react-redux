@@ -1,12 +1,10 @@
 import td from 'testdouble';
-import { stringify } from 'qs';
-import config from 'src/config';
 import * as browser from 'src/helpers/browser';
 
 // module under test
 import api from './index';
 
-const query ='fooBar';
+const query = 'fooBar';
 
 afterEach(() => {
   td.reset();
@@ -48,7 +46,7 @@ test('fetchSearch gets and parses correctly', async () => {
       items: [
         { id: 1, title: 'Bar', url: 'bar.com' },
       ],
-    }
+    },
   ]);
 });
 

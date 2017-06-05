@@ -105,15 +105,13 @@ module.exports = merge.smart(webpackBaseConfig, {
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: function (module, count) {
+      minChunks: (module) => {
         // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        );
+        const startsWithNodeModules = module.resource.indexOf(
+          path.join(__dirname, '../node_modules'),
+        ) === 0;
+
+        return module.resource && /\.js$/.test(module.resource) && startsWithNodeModules;
       },
     }),
   ],
