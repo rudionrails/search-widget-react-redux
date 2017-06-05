@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import {
@@ -14,11 +15,14 @@ const reducer = combineReducers({
   loading: loadingReducer,
 });
 
-export default function () {
+export default function create() {
   const localState = getLocalState();
   const sagaMiddleware = createSagaMiddleware();
+
   const middleware = applyMiddleware(sagaMiddleware);
-  const store = createStore(reducer, localState, middleware);
+  const store = createStore(reducer, localState, composeWithDevTools(
+    middleware,
+  ));
 
   // save store to localstorage
   store.subscribe(() => {
