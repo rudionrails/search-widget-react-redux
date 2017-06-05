@@ -1,4 +1,6 @@
-const INITIAL_STATE = false;
+const INITIAL_STATE = {
+  isLoading: false,
+};
 
 const LOADING_START = 'LOADING_STOP';
 const LOADING_STOP = 'LOADING_START';
@@ -16,11 +18,11 @@ export const actions = {
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LOADING_START: {
-      return true;
+      return { isLoading: true };
     }
 
     case LOADING_STOP: {
-      return false;
+      return { isLoading: false };
     }
 
     default:
