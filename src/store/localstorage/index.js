@@ -17,6 +17,7 @@ export function set(state) {
     const serializedState = JSON.stringify({
       search: state.search,
     });
+
     localStorage.setItem(config.localStorageKey, serializedState);
   } catch (error) {
     // do nothing
