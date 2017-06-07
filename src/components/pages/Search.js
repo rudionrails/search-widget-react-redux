@@ -39,20 +39,20 @@ class Search extends React.Component {
       <div className="sw-Search">
         <div className="sw-Search-close" onClick={onClose}>
           <i className="material-icons">clear</i>
-      </div>
+        </div>
 
-      <Bar
-        className="sw-Search-top"
-        isLoading={isLoading}
-        query={query}
-        onSearch={onSearch}
-      />
+        <Bar
+          className="sw-Search-top"
+          isLoading={isLoading}
+          query={query}
+          onSearch={onSearch}
+        />
 
-      <Results
-        className="sw-Search-bottom"
-        onClick={onClick}
-        results={results}
-      />
+        <Results
+          className="sw-Search-bottom"
+          onClick={onClick}
+          results={results}
+        />
       </div>
     );
   }
