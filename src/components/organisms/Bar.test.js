@@ -40,6 +40,6 @@ test('triggers onSearch with the right value', () => {
   const onSearch = td.function('onSearch');
   const input = shallow(<Bar { ...props } onSearch={onSearch} />).find('input');
 
-  input.simulate('change', { target: { value: 'Query Change' } });
+  input.simulate('keyDown', { target: { value: 'Query Change' } });
   td.verify(onSearch('Query Change'));
 });
