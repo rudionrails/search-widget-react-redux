@@ -9,6 +9,7 @@ import config, { configure } from 'src/config';
 import createStore from 'src/store';
 import createRouter from 'src/router';
 import Search from 'src/containers/pages/Search';
+import './app.css';
 
 let store; // data store
 let router; // router to open and close the widget
