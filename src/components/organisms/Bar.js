@@ -28,8 +28,9 @@ class Bar extends React.Component {
                   className="form-control"
                   placeholder="Type for search..."
                   ref={(input) => { this.input = input; }}
-                  value={this.props.query}
-                  onChange={event => this.props.onSearch(event.target.value)} />
+                  defaultValue={this.props.query}
+                  onKeyDown={event => this.props.onSearch(event.target.value)}
+                />
 
                 <span className="input-group-addon">
                   {this.props.isLoading &&
