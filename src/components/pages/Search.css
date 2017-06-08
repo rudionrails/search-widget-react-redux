@@ -1,5 +1,5 @@
 .sw-Search {
-  background: rgb(237, 237, 237);
+  /* background: rgb(237, 237, 237); */
   bottom: 0;
   color: rgba(0, 0, 0, 0.9);
   left: 0;
@@ -18,7 +18,7 @@
 }
 
 .sw-Search-close {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(145, 145, 145, 0.7);
   cursor: pointer;
   font-size: 200%;
   opacity: 0;
@@ -30,7 +30,7 @@
   z-index: 1;
 
   &:hover {
-    color: rgba(0, 0, 0, 0.5);
+    color: #fff;
   }
 
   i {
@@ -39,12 +39,8 @@
 }
 
 .sw-Search-top {
-  background: rgb(88, 168, 248);
-  box-shadow:
-    0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  height: 15rem;
+  background: rgb(50, 58, 69);
+  height: 9rem;
   transform: translate3d(0, -10%, 0);
   transition: transform 0.3s ease;
   width: 100%;
