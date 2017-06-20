@@ -39,6 +39,7 @@
     "eslint-plugin-redux-saga": "^0.3.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.2",
+    "friendly-errors-webpack-plugin": "^1.6.1",
     "fs-extra": "^3.0.1",
     "html-webpack-plugin": "^2.28.0",
     "jest": "^20.0.4",
@@ -67,7 +68,8 @@
     "webpack-manifest-plugin": "1.1.0"
   },
   "scripts": {
-    "start": "webpack-dashboard -- node -r dotenv/config ./node_modules/.bin/webpack-dev-server",
+    "start": "node -r dotenv/config ./node_modules/.bin/webpack-dev-server --progress",
+    "start:dash": "webpack-dashboard -- node -r dotenv/config ./node_modules/.bin/webpack-dev-server",
     "build": "node -r dotenv/config ./node_modules/.bin/webpack -p",
     "deploy": "surge ./build/ search-widget-react-redux.surge.sh",
     "build-n-deploy": "yarn build && yarn deploy",

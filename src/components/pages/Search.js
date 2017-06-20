@@ -13,7 +13,7 @@ class Search extends React.Component {
     onSearch: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
-  }
+  };
 
   static childContextTypes = {
     onClick: PropTypes.func.isRequired,

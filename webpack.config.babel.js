@@ -2,10 +2,10 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import DashboardPlugin from 'webpack-dashboard/plugin';
 import StyleLintPlugin from 'stylelint-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
+import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 
 // local config
 const srcPath = path.resolve(__dirname, 'src');
@@ -35,7 +35,7 @@ const config = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
     alias: {
       src: srcPath,
     },
@@ -45,20 +45,13 @@ const config = {
     rules: [
       {
         test: /\.js$/,
+        enforce: 'pre',
         include: srcPath,
         use: [
           'babel-loader',
           'eslint-loader',
         ],
       },
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     'style-loader',
-      //     { loader: 'css-loader', options: { importLoaders: 1 } },
-      //     'postcss-loader',
-      //   ],
-      // },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -73,13 +66,6 @@ const config = {
   },
 
   plugins: [
-    // Makes some environment variables available in index.html.
-    // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
-    // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    // In production, it will be an empty string unless you specify "homepage"
-    // in `package.json`, in which case it will be the pathname of that URL.
-    // new InterpolateHtmlPlugin(env.raw),
-
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       template: path.resolve(publicPath, 'index.html'),
@@ -107,14 +93,30 @@ const config = {
     }),
 
     new StyleLintPlugin({
-      context: 'src',
+      context: srcPath,
       files: '**/*.css',
+    }),
+
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: ['Project is running at http://localhost:8080'],
+        notes: ['Run linter with: yarn lint', 'Run tests with: yarn test'],
+      },
     }),
   ],
 
   // from `webpack-dev-server` module
   devServer: {
     contentBase: publicPath,
+    noInfo: true,
+    quiet: true,
+
+    // Shows a full-screen overlay in the browser when there
+    // are compiler errors or warnings.
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
   },
 };
 
@@ -141,10 +143,6 @@ if (isProd) {
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
     new ManifestPlugin(),
-  );
-} else {
-  config.plugins.push(
-    new DashboardPlugin(),
   );
 }
 
