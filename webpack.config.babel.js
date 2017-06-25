@@ -2,9 +2,9 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import StyleLintPlugin from 'stylelint-webpack-plugin';
+import StyleLintWebpackPlugin from 'stylelint-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import ManifestPlugin from 'webpack-manifest-plugin';
+import WebpackManifestPlugin from 'webpack-manifest-plugin';
 import CompressionWebpackPlugin from 'compression-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 
@@ -96,7 +96,7 @@ const config = {
       filename: isProd ? '[hash]/[name].css' : '[name].css',
     }),
 
-    new StyleLintPlugin({
+    new StyleLintWebpackPlugin({
       context: srcPath,
       files: '**/*.css',
     }),
@@ -135,7 +135,7 @@ if (isProd) {
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
     // having to parse `index.html`.
-    new ManifestPlugin(),
+    new WebpackManifestPlugin(),
 
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({

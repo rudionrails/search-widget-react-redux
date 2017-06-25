@@ -38,7 +38,7 @@
 }
 
 .sw-Search-top {
-  background: rgb(50, 58, 69);
+  background: #323a45;
   height: 9rem;
   transform: translate3d(0, -10%, 0);
   transition: transform 0.3s ease;

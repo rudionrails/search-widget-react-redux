@@ -37,6 +37,7 @@ class Bar extends React.Component {
                   type="text"
                   className="form-control"
                   placeholder="Type for search..."
+                  aria-label="query"
                   ref={(input) => { this.input = input; }}
                   defaultValue={this.props.query}
                   onChange={this.handleChange}
