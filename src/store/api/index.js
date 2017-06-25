@@ -37,7 +37,7 @@ async function parse({
   const results = Object.keys(relationships).map((key) => {
     const data = relationships[key].data;
     const items = data.map(item => match(item))
-                      .map(item => select(item));
+      .map(item => select(item));
 
     return {
       title: key,

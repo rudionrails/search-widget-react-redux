@@ -16,6 +16,16 @@ class Bar extends React.Component {
     this.input.focus();
   }
 
+  handleChange = ({ target: { value } }) => {
+    this.props.onSearch(value);
+  }
+
+  handleKeyDown = ({ keyCode, target: { value } }) => {
+    if (keyCode !== 13) return; // do nothing unless ENTER
+
+    this.props.onSearch(value);
+  }
+
   render() {
     return (
       <div className={`sw-Bar ${this.props.className}`}>
@@ -29,7 +39,8 @@ class Bar extends React.Component {
                   placeholder="Type for search..."
                   ref={(input) => { this.input = input; }}
                   defaultValue={this.props.query}
-                  onKeyDown={event => this.props.onSearch(event.target.value)}
+                  onChange={this.handleChange}
+                  onKeyDown={this.handleKeyDown}
                 />
 
                 <span className="input-group-addon">

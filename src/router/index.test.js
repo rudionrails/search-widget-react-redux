@@ -35,7 +35,7 @@ describe('a router instance', () => {
   });
 
   test('navigate changes pushState', async () => {
-    const pushState = td.replace(history, 'pushState');
+    const pushState = td.replace(history, 'pushState', Function.prototype);
     await router.navigate('/foo-bar#/baz');
 
     td.verify(pushState(undefined, undefined, '/foo-bar#/baz'));

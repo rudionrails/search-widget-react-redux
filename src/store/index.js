@@ -3,8 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import {
-  get as getLocalState,
-  set as setLocalState,
+  get as getLocalStorage,
+  set as setLocalStorage,
 } from 'src/store/localstorage';
 import { reducer as searchReducer } from 'src/store/redux/search';
 import { reducer as loadingReducer } from 'src/store/redux/loading';
@@ -16,20 +16,21 @@ const reducer = combineReducers({
 });
 
 export default function create() {
-  const localState = getLocalState();
+  const localStorage = getLocalStorage();
   const sagaMiddleware = createSagaMiddleware();
 
   const middleware = applyMiddleware(sagaMiddleware);
-  const store = createStore(reducer, localState, composeWithDevTools(
+  const store = createStore(reducer, localStorage, composeWithDevTools(
     middleware,
   ));
 
   // save store to localstorage
   store.subscribe(() => {
-    setLocalState(store.getState());
+    setLocalStorage(store.getState());
   });
 
-  sagaMiddleware.run(fetchSearch);
+  const { search } = Object.assign({}, localStorage);
+  sagaMiddleware.run(fetchSearch, search);
   sagaMiddleware.run(sagas);
 
   return store;

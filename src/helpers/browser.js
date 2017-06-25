@@ -3,10 +3,10 @@
 
 import 'whatwg-fetch';
 
-const localStorage = window.localStorage || {
+const localStorage = Object.assign({
   setItem: () => null,
   getItem: () => null,
-};
+}, window.localStorage);
 
 export {
   window,
