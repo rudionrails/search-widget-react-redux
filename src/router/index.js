@@ -21,11 +21,6 @@ export default function create({
     }
   }
 
-  // initialization
-  addEventListener('popstate', handleLocationChange);
-  handleLocationChange();
-
-  // public interface
   async function navigate(path) {
     if (path.startsWith('http')) {
       await close();
@@ -39,6 +34,10 @@ export default function create({
   function destroy() {
     removeEventListener('popstate', handleLocationChange);
   }
+
+  // initialization
+  addEventListener('popstate', handleLocationChange);
+  handleLocationChange();
 
   return Object.freeze({
     navigate,

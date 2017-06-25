@@ -98,13 +98,13 @@ function create({
 } = {}) {
   if (store) throw new Error('already created');
 
-  // setup config
-  configure({ triggerRoute, triggerKey, apiUrl });
+  // handle event listeners
+  document.addEventListener('keydown', openEventListener);
 
-  // initialization
+  // initialize
+  configure({ triggerRoute, triggerKey, apiUrl });
   store = createStore();
   router = createRouter({ open, close });
-  document.addEventListener('keydown', openEventListener);
 
   // public interface
   function destroy() {
