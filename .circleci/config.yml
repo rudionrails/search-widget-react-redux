@@ -1,5 +1,6 @@
 version: 2
 jobs:
+  working_directory: ~/search-widget-react-redux
   build:
     docker:
       - image: circleci/node:latest
