@@ -1,22 +1,19 @@
-# Search Widget written in React
+# [React/Redux Search Widget](https://search-widget-react-redux.surge.sh) &middot; [![Code Climate](https://codeclimate.com/github/rudionrails/search-widget-react-redux/badges/gpa.svg)](https://codeclimate.com/github/rudionrails/search-widget-react-redux)
 
 This Widget provides an easy-to-use fullscreen UI for a search interface.
 
 ## Usage
 
 ```javascript
-/**
- * Attach the Widget to a DOMNode
- */
-SearchWidget.create()
-  .then(() => {
-    console.log('Widget created');
-  })
-  .catch((err) => {
-    console.error('An error occured: ', err);
-  });
-```
+SearchWidget.create({
+  apiUrl: 'http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search' // required
+  triggerRoute: '#/finder', // used to open the widget (optional)
+  triggerKey: 'F', // hit SHIFT+F to open the widget (optional)
+  preload: true, // whether to fetch data on create or not (optional)
+  localStorageKey: 'search-widget-react-redux', // used to identity data in localstorage (optional)
+});
 
+```
 
 ## Dependencies
 
@@ -37,42 +34,39 @@ Ensure you have installed (globally) the following software on your system:
 * [yarn](https://yarnpkg.com/) ^0.24.0
 * [watchman](https://facebook.github.io/watchman/docs/install.html) ^4.7.0
 
-### Applied methodologies
-
-* [SUITCSS](http://suitcss.github.io/)
-
 ### Setup
 
-Inside your local working directory:
-
 ```sh
+# install dependencies
 $ yarn install
-```
 
-### Start the Development Server
-
-To start the development server:
-
-```sh
+# start the development server
 $ yarn start
-```
 
-### Testing
-
-```sh
+# run the tests
 $ yarn test
-```
 
-Or run it continuoiusly in the background
-
-```sh
+# run the tests in watch mode
 $ yarn test:watch
-```
 
-### Linting
-
-```sh
+# run the linters (js+css)
 $ yarn lint
 ```
+
+## Things to consider
+
+### JavaScript
+* [Babel](http://babeljs.io/)
+* [webpack](https://webpack.js.org/)
+* [React](https://facebook.github.io/react/)
+* [Redux](http://redux.js.org/)
+* [Redux-Saga](https://redux-saga.js.org/)
+* [Jest](https://facebook.github.io/jest/)
+* [testdouble](https://github.com/testdouble/testdouble.js)
+
+### CSS
+* [PostCSS](http://postcss.org/)
+* [SUITCSS](http://suitcss.github.io/)
+
 
 Copyright © Rudolf Schmidt, released under the MIT license
