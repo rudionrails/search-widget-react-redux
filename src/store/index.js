@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
+import config from 'src/config';
 import {
   get as getLocalStorage,
   set as setLocalStorage,
@@ -29,8 +30,10 @@ export default function create() {
     setLocalStorage(store.getState());
   });
 
-  const { search } = Object.assign({}, localStorage);
-  sagaMiddleware.run(fetchSearch, search);
+  if (config.preload) {
+    const { search } = Object.assign({}, localStorage);
+    sagaMiddleware.run(fetchSearch, search);
+  }
   sagaMiddleware.run(sagas);
 
   return store;

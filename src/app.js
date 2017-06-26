@@ -91,18 +91,14 @@ async function close() {
   container = undefined;
 }
 
-function create({
-  triggerRoute,
-  triggerKey,
-  apiUrl,
-} = {}) {
+function create(options = {}) {
   if (store) throw new Error('already created');
 
   // handle event listeners
   document.addEventListener('keydown', openEventListener);
 
   // initialize
-  configure({ triggerRoute, triggerKey, apiUrl });
+  configure(options);
   store = createStore();
   router = createRouter({ open, close });
 
