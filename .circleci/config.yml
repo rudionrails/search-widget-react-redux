@@ -6,4 +6,6 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: npm install
+      - run: npm run lint
+      - run: npm run test
