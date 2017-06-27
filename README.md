@@ -7,10 +7,10 @@ This Widget provides an easy-to-use fullscreen UI for a search interface.
 ```javascript
 SearchWidget.create({
   apiUrl: 'http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search' // required
+  preload: true, // whether to fetch data on create or not (optional)
   triggerRoute: '#/finder', // used to open the widget (optional)
   triggerKey: 'F', // hit SHIFT+F to open the widget (optional)
-  preload: true, // whether to fetch data on create or not (optional)
-  localStorageKey: 'search-widget-react-redux', // used to identity data in localstorage (optional)
+  localStorageKey: 'search-widget-react-redux', // used to identify data in localstorage (optional)
 });
 
 ```
@@ -56,17 +56,25 @@ $ yarn lint
 ## Things to consider
 
 ### JavaScript
-* [Babel](http://babeljs.io/)
-* [webpack](https://webpack.js.org/)
-* [React](https://facebook.github.io/react/)
-* [Redux](http://redux.js.org/)
-* [Redux-Saga](https://redux-saga.js.org/)
-* [Jest](https://facebook.github.io/jest/)
-* [testdouble](https://github.com/testdouble/testdouble.js)
+* [`Babel`](http://babeljs.io/) for transpiling JavaScript
+* [`webpack`](https://webpack.js.org/) for module bundling
+* [`React`](https://facebook.github.io/react/) for building user interfaces
+* [`Redux`](http://redux.js.org/) for state management
+* [`Redux-Saga`](https://redux-saga.js.org/) for managing side effects
+* [`Jest`](https://facebook.github.io/jest/) for testing
+* [`testdouble`](https://github.com/testdouble/testdouble.js) for mocking/stubbing/spying
+* [`eslint`](http://eslint.org/) for linting JavaScript
 
-### CSS
-* [PostCSS](http://postcss.org/)
-* [SUITCSS](http://suitcss.github.io/)
+### HTML/CSS
+* [`PostCSS`](http://postcss.org/) for transforming CSS
+* [`SUITCSS`](http://suitcss.github.io/) for compoent-based UIdevelopment
+* [`Atomic Design`](http://atomicdesign.bradfrost.com/) for creating and maintaining robust UI systems
+* [`stylelint`](https://stylelint.io/) for linting CSS
 
+### Other
+* [`json:api`](http://jsonapi.org/) for shared conventions on implementing JSON API's
+* [`surge`](http://surge.sh/) for publishing static web front-ends
+* [`circleci`](https://circleci.com/gh/rudionrails/search-widget-react-redux) for continuous integration
+* [`codeclimate`](https://codeclimate.com/github/rudionrails/search-widget-react-redux) for healthy code
 
 Copyright © Rudolf Schmidt, released under the MIT license
