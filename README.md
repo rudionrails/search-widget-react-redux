@@ -1,4 +1,4 @@
-# [React/Redux Search Widget](https://search-widget-react-redux.surge.sh) &middot; [![Code Climate](https://codeclimate.com/github/rudionrails/search-widget-react-redux/badges/gpa.svg)](https://codeclimate.com/github/rudionrails/search-widget-react-redux)
+# [React/Redux Search Widget](https://search-widget-react-redux.surge.sh) &middot; [![CircleCI](https://circleci.com/gh/rudionrails/search-widget-react-redux.svg?style=shield)](https://circleci.com/gh/rudionrails/search-widget-react-redux) [![Code Climate](https://codeclimate.com/github/rudionrails/search-widget-react-redux/badges/gpa.svg)](https://codeclimate.com/github/rudionrails/search-widget-react-redux)
 
 This Widget provides an easy-to-use fullscreen UI for a search interface.
 
