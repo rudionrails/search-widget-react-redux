@@ -19,9 +19,9 @@ SearchWidget.create({
 
 The embedding page needs to provide the following libraries:
 
-* [Material Icon Font](http://fonts.googleapis.com/icon?family=Material+Icons)
-* [Open Sans Font](http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900,300italic,400italic)
-* [Bootstrap](https://github.com/twbs/bootstrap) ^3.3.0
+* [`Material Icon Font`](http://fonts.googleapis.com/icon?family=Material+Icons)
+* [`Open Sans Font`](http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900,300italic,400italic)
+* [`Bootstrap`](https://github.com/twbs/bootstrap) ^3.3.0
 
 
 ## Development
@@ -30,9 +30,9 @@ The embedding page needs to provide the following libraries:
 
 Ensure you have installed (globally) the following software on your system:
 
-* [node.js](http://nodejs.org/) ^7.0.0
-* [yarn](https://yarnpkg.com/) ^0.24.0
-* [watchman](https://facebook.github.io/watchman/docs/install.html) ^4.7.0
+* [`node.js`](http://nodejs.org/) ^7.0.0
+* [`yarn`](https://yarnpkg.com/) ^0.24.0
+* [`watchman`](https://facebook.github.io/watchman/docs/install.html) ^4.7.0
 
 ### Setup
 
@@ -51,6 +51,63 @@ $ yarn test:watch
 
 # run the linters (js+css)
 $ yarn lint
+```
+
+## API Endpoint
+
+In order to fetch data the `apiUrl` endpoint is required to be `json:api` spec compliant. The dummy [`apiUrl`](http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search) is specified here: [https://api.stoplight.io/v1/versions/SdBSjoQ24BC2RBt2A/export/oas.json](https://api.stoplight.io/v1/versions/SdBSjoQ24BC2RBt2A/export/oas.json).
+
+The minimum required response would be:
+
+```
+{
+  "data": {
+    "id": "1",
+    "type": "search",
+    // The query sent by the widget. It is optional and the widget
+    // will ignore it anyways.
+    "attributes": {
+      "query": "Search Widget"
+    },
+    "relationships": {
+      // Add up to 12 relations ships for the widget to adjust its columns.
+      //
+      // It takes the `key` of the relationship as the headline and the
+      // data array as items in the column.
+      "widgets": {
+        "data": [
+          {
+            "id": "1",
+            "type": "widget"
+          }
+        ],
+        "links": {
+          "related": "/search/widgets",
+          "self": "/widgets"
+        }
+      }
+    }
+  },
+  "included": [
+    // Items are required to follow this basic schema.
+    // 
+    // Every item must have a `title` attribute..
+    // Every item must have a `links.self` attribute (used to redirect on click).
+    {
+      "id": "1",
+      "type": "widget"
+      "attributes": {
+        "title": "React Redux Search Widget"
+      },
+      "links": {
+        "self": "https://github.com/rudionrails/search-widget-react-redux"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://search-widget-react-redux.surge.sh"
+  }
+}
 ```
 
 ## Things to consider
