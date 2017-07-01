@@ -2,6 +2,10 @@
 
 This Widget provides an easy-to-use fullscreen UI for a search interface.
 
+<p style="background: black; padding: 1rem 0; text-align: center;">
+  <img src="https://raw.githubusercontent.com/rudionrails/search-widget-react-redux/master/public/widget.gif" />
+</p>
+
 ## Usage
 
 ```javascript
