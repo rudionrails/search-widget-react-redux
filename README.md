@@ -83,6 +83,7 @@ Passing the `query` parameter is also implemented according to jsonapi:spec [`fi
 * [`stylelint`](https://stylelint.io/) for linting CSS
 
 ### Other
+* [`stoplight`](http://stoplight.io/) for defining the mock api
 * [`json:api`](http://jsonapi.org/) for shared conventions on implementing JSON API's
 * [`surge`](http://surge.sh/) for publishing static web front-ends
 * [`circleci`](https://circleci.com/gh/rudionrails/search-widget-react-redux) for continuous integration
