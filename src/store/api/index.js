@@ -23,11 +23,13 @@ async function parse({
   data: { relationships },
   included,
 }) {
+  // matche the right resource from the `included` array
   const match = ({
     type,
     id,
   }) => included.find(i => i.type === type && i.id === id);
 
+  // select the appropriate attributes
   const select = ({
     id,
     attributes: { title },
