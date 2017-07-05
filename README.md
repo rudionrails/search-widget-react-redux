@@ -59,60 +59,9 @@ $ yarn lint
 
 ## API Endpoint
 
-In order to fetch data the `apiUrl` endpoint is required to be `json:api` spec compliant. The dummy [`apiUrl`](http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search) is specified here: [https://api.stoplight.io/v1/versions/SdBSjoQ24BC2RBt2A/export/oas.json](https://api.stoplight.io/v1/versions/SdBSjoQ24BC2RBt2A/export/oas.json).
+In order to fetch data, the `apiUrl` endpoint is required to be `json:api` spec compliant. The dummy [`apiUrl`](http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search) is specified here: [https://search-widget-react-redux.api-docs.io](https://search-widget-react-redux.api-docs.io).
 
-The minimum required response would be:
-
-```
-{
-  "data": {
-    "id": "1",
-    "type": "search",
-    // The query sent by the widget. It is optional and the widget
-    // will ignore it anyways.
-    "attributes": {
-      "query": "Search Widget"
-    },
-    "relationships": {
-      // Add up to 12 relations ships for the widget to adjust its columns.
-      //
-      // It takes the `key` of the relationship as the headline and the
-      // data array as items in the column.
-      "widgets": {
-        "data": [
-          {
-            "id": "1",
-            "type": "widget"
-          }
-        ],
-        "links": {
-          "related": "/search/widgets",
-          "self": "/widgets"
-        }
-      }
-    }
-  },
-  "included": [
-    // Items are required to follow this basic schema.
-    // 
-    // Every item must have a `title` attribute..
-    // Every item must have a `links.self` attribute (used to redirect on click).
-    {
-      "id": "1",
-      "type": "widget"
-      "attributes": {
-        "title": "React Redux Search Widget"
-      },
-      "links": {
-        "self": "https://github.com/rudionrails/search-widget-react-redux"
-      }
-    }
-  ],
-  "links": {
-    "self": "https://search-widget-react-redux.surge.sh"
-  }
-}
-```
+Passing the `query` parameter is also implemented according to jsonapi:spec [`filtering`](http://jsonapi.org/recommendations/#filtering) recommandation.
 
 ## Things to consider
 
@@ -128,6 +77,7 @@ The minimum required response would be:
 
 ### HTML/CSS
 * [`PostCSS`](http://postcss.org/) for transforming CSS
+* [`cssnext`](http://cssnext.io/) for using tomorrow's CSS syntax today
 * [`SUITCSS`](http://suitcss.github.io/) for compoent-based UIdevelopment
 * [`Atomic Design`](http://atomicdesign.bradfrost.com/) for creating and maintaining robust UI systems
 * [`stylelint`](https://stylelint.io/) for linting CSS
@@ -137,5 +87,6 @@ The minimum required response would be:
 * [`surge`](http://surge.sh/) for publishing static web front-ends
 * [`circleci`](https://circleci.com/gh/rudionrails/search-widget-react-redux) for continuous integration
 * [`codeclimate`](https://codeclimate.com/github/rudionrails/search-widget-react-redux) for healthy code
+* [`pre-push`](https://github.com/dflourusso/pre-push) for running git-hooks, like linting and testing
 
 Copyright © Rudolf Schmidt, released under the MIT license
