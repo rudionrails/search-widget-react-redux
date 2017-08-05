@@ -15,6 +15,14 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" />
+
+  <style>
+    .jumbotron {
+      background: #f5f2f0;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 
 <body>
@@ -43,6 +51,12 @@
           </p>
         </div>
 
+        <pre>
+          <code id="sw-Code" class="language-javascript">
+            // will be replaced with actual code
+          </code>
+        </pre>
+
         <hr />
 
         <footer class="footer">
@@ -52,12 +66,35 @@
     </div>
   </div>
 
+  <script id="sw-Script">
+document.addEventListener("DOMContentLoaded", function(event) { 
+  SearchWidget.create({
+    // the API url to fetch the data
+    apiUrl: 'https://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search',
+
+    // will already fetch data, even when widget is not yet opened (optional)
+    preload: true,
+
+    // open the widget with this URL (optional)
+    triggerRoute: '#/finder',
+
+    // open the app with this key (optional)
+    triggerKey: 'F',
+
+    // the localstorage key for caching
+    localStorageKey: 'search-widget-react-redux',
+  });
+});
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+
   <script>
-    document.addEventListener("DOMContentLoaded", function(event) { 
-      SearchWidget.create({
-				apiUrl: 'https://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search',
-			});
-    });
+    var script = document.querySelector('#sw-Script');
+    var code = document.querySelector('#sw-Code');
+
+    code.innerHTML = script.innerHTML;
+    Prism.highlightAll();
   </script>
 </body>
 </html>
