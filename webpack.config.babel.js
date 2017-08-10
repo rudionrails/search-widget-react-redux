@@ -76,14 +76,14 @@ const config = {
       inject: true,
 
       minify: isProd && {
-        removeComments: true,
-        collapseWhitespace: true,
+        // removeComments: true,
+        // collapseWhitespace: true,
         removeRedundantAttributes: true,
         useShortDoctype: true,
         removeEmptyAttributes: true,
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
-        minifyJS: true,
+        // minifyJS: true,
         minifyCSS: true,
         minifyURLs: true,
       },

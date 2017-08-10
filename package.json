@@ -83,7 +83,7 @@
   "scripts": {
     "start": "node -r dotenv/config ./node_modules/.bin/webpack-dev-server --progress",
     "start:dash": "webpack-dashboard -- node -r dotenv/config ./node_modules/.bin/webpack-dev-server",
-    "prebuild": "yarn validate",
+    "prebuild": "rm -rf ./build && yarn validate",
     "build": "node -r dotenv/config ./node_modules/.bin/webpack -p --progress",
     "deploy": "surge ./build/ search-widget-react-redux.surge.sh",
     "build-n-deploy": "yarn build && yarn deploy",
