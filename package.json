@@ -14,7 +14,7 @@
   "homepage": "https://github.com/rudionrails/search-widget-react-redux",
   "license": "MIT",
   "dependencies": {
-    "debug": "^2.6.8",
+    "debug": "^3.0.0",
     "prop-types": "^15.5.10",
     "qs": "^6.4.0",
     "react": "^15.5.4",
