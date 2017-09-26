@@ -2,6 +2,8 @@ import config from 'src/config';
 import { localStorage } from 'src/helpers/browser';
 
 export function get() {
+  if (!config.localStorage) return undefined;
+
   try {
     const serializedState = localStorage.getItem(config.localStorageKey);
 
@@ -13,6 +15,8 @@ export function get() {
 }
 
 export function set(state) {
+  if (!config.localStorage) return;
+
   try {
     const serializedState = JSON.stringify({
       search: state.search,
