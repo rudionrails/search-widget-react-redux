@@ -78,10 +78,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // open the widget with this URL (optional)
     triggerRoute: '#/finder',
 
-    // open the app with this key (optional)
+    // open the app with this shortcut key (optional)
     triggerKey: 'F',
 
-    // the localstorage key for caching
+    // enable/disable usage of localStorage (optional)
+    localStorage: true,
+
+    // the localstorage key for caching (optional)
     localStorageKey: 'search-widget-react-redux',
   });
 });

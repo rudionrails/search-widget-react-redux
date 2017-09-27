@@ -10,6 +10,12 @@ afterEach(() => {
 });
 
 describe('get', () => {
+  test('returns undefined object when localstorage is disabled', () => {
+    td.replace(config, 'localStorage', false);
+
+    expect(get()).toEqual(undefined);
+  });
+
   test('returns data from localStorage', () => {
     const getItem = td.replace(localStorage, 'getItem');
     td.when(getItem(config.localStorageKey)).thenReturn(

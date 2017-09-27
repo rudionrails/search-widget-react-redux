@@ -3,9 +3,13 @@
 */
 const config = {
   preload: true, // whether to fetch data on create or not
+
   triggerRoute: '#/finder', // unsed to mount the app via window.location
   triggerKey: 'F', // used to mount the app via keypress
+
   apiUrl: undefined, // http://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search
+
+  localStorage: true, // whether to use localstorage at all
   localStorageKey: 'search-widget-react-redux', // used to identity data in localstorage
 };
 
