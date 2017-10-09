@@ -1,6 +1,4 @@
-/* global window, document, history, location, fetch */
-/* global addEventListener, removeEventListener, setTimeout */
-
+/* global window, document, setTimeout */
 import 'whatwg-fetch';
 
 const localStorage = window.localStorage || {
@@ -11,12 +9,7 @@ const localStorage = window.localStorage || {
 export {
   window,
   document,
-  history,
-  location,
   localStorage,
-
-  addEventListener,
-  removeEventListener,
   setTimeout,
 
   fetch,

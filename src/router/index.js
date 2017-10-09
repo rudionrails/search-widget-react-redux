@@ -1,12 +1,7 @@
-/* global window, location, history */
-/* global addEventListener, removeEventListener */
-
 import config from 'src/config';
 import {
-  location,
-  history,
-  addEventListener,
-  removeEventListener,
+  window,
+  document,
 } from 'src/helpers/browser';
 
 export default function create({
@@ -14,7 +9,7 @@ export default function create({
   close,
 }) {
   async function handleLocationChange() {
-    if (location.hash === config.triggerRoute) {
+    if (window.location.hash === config.triggerRoute) {
       await open();
     } else {
       await close();
@@ -24,19 +19,19 @@ export default function create({
   async function navigate(path) {
     if (path.startsWith('http')) {
       await close();
-      Object.assign(location, { href: path });
+      Object.assign(window.location, { href: path });
     } else {
-      await history.pushState(undefined, undefined, path);
+      await window.history.pushState(undefined, undefined, path);
       await handleLocationChange();
     }
   }
 
   function destroy() {
-    removeEventListener('popstate', handleLocationChange);
+    document.removeEventListener('popstate', handleLocationChange);
   }
 
   // initialization
-  addEventListener('popstate', handleLocationChange);
+  document.addEventListener('popstate', handleLocationChange);
   handleLocationChange();
 
   return Object.freeze({

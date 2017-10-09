@@ -24,11 +24,9 @@ test('export a configure function', () => {
 test('rootSaga', () => {
   const gen = rootSaga();
 
-  expect(gen.next().value).toEqual(
-    all([
-      takeLatest(searchTypes.SEARCH, fetchSearch),
-    ]),
-  );
+  expect(gen.next().value).toEqual(all([
+    takeLatest(searchTypes.SEARCH, fetchSearch),
+  ]));
 
   // done
   expect(gen.next().done).toBe(true);
@@ -39,30 +37,20 @@ test('fetchSearch with { query } on success', () => {
   const gen = fetchSearch({ query });
 
   // loading start
-  expect(gen.next().value).toEqual(
-    put(loadingActions.start()),
-  );
+  expect(gen.next().value).toEqual(put(loadingActions.start()));
 
   // delay user input
-  expect(gen.next().value).toEqual(
-    call(delay, 200),
-  );
+  expect(gen.next().value).toEqual(call(delay, 200));
 
   // fetch data from API
-  expect(gen.next().value).toEqual(
-    call(api.fetchSearch, query),
-  );
+  expect(gen.next().value).toEqual(call(api.fetchSearch, query));
 
   // dispatch SEARCH_SUCCESS action
   const results = [1, 2, 3];
-  expect(gen.next(results).value).toEqual(
-    put(searchActions.searchSuccess(results)),
-  );
+  expect(gen.next(results).value).toEqual(put(searchActions.searchSuccess(results)));
 
   // loading stop
-  expect(gen.next().value).toEqual(
-    put(loadingActions.stop()),
-  );
+  expect(gen.next().value).toEqual(put(loadingActions.stop()));
 
   // done
   expect(gen.next().done).toBe(true);
@@ -73,9 +61,7 @@ test('fetchSearch without options', () => {
 
   gen.next(); // loading start
   gen.next(); // delay
-  expect(gen.next().value).toEqual( // fetch data with default query value
-    call(api.fetchSearch, ''),
-  );
+  expect(gen.next().value).toEqual(call(api.fetchSearch, '')); // fetch data with default query value
   gen.next(); // dispatch SEARCH_SUCCESS
   gen.next(); // loading stop
 
@@ -87,20 +73,14 @@ test('fetchSearch whth { query } on failure', () => {
   const gen = fetchSearch({ query });
 
   // loading start
-  expect(gen.next().value).toEqual(
-    put(loadingActions.start()),
-  );
+  expect(gen.next().value).toEqual(put(loadingActions.start()));
 
   // simulate exception
   const error = new Error();
-  expect(gen.throw(error).value).toEqual(
-    put(searchActions.searchFailure(error)),
-  );
+  expect(gen.throw(error).value).toEqual(put(searchActions.searchFailure(error)));
 
   // loading stop
-  expect(gen.next().value).toEqual(
-    put(loadingActions.stop()),
-  );
+  expect(gen.next().value).toEqual(put(loadingActions.stop()));
 
   // done
   expect(gen.next().done).toBe(true);

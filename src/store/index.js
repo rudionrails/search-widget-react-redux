@@ -21,9 +21,11 @@ export default function create() {
   const sagaMiddleware = createSagaMiddleware();
 
   const middleware = applyMiddleware(sagaMiddleware);
-  const store = createStore(reducer, localStorage, composeWithDevTools(
-    middleware,
-  ));
+  const store = createStore(
+    reducer,
+    localStorage,
+    composeWithDevTools(middleware),
+  );
 
   // save store to localstorage
   store.subscribe(() => {

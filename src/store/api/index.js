@@ -37,7 +37,7 @@ async function parse({
   }) => ({ id, title, url: self });
 
   const results = Object.keys(relationships).map((key) => {
-    const data = relationships[key].data;
+    const { data } = relationships[key];
     const items = data.map(item => match(item))
       .map(item => select(item));
 

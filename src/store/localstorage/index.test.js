@@ -17,10 +17,9 @@ describe('get', () => {
   });
 
   test('returns data from localStorage', () => {
+    const value = JSON.stringify({ foo: 'bar' });
     const getItem = td.replace(localStorage, 'getItem');
-    td.when(getItem(config.localStorageKey)).thenReturn(
-      JSON.stringify({ foo: 'bar' }),
-    );
+    td.when(getItem(config.localStorageKey)).thenReturn(value);
 
     expect(get()).toEqual({
       foo: 'bar',
