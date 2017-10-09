@@ -12,10 +12,6 @@ class Bar extends React.Component {
     onSearch: PropTypes.func.isRequired,
   }
 
-  componentDidMount() {
-    this.input.focus();
-  }
-
   handleChange = ({ target: { value } }) => {
     this.props.onSearch(value);
   }
@@ -34,11 +30,11 @@ class Bar extends React.Component {
             <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
               <div className="input-group">
                 <input
+                  autoFocus
                   type="text"
                   className="form-control"
                   placeholder="Type for search..."
                   aria-label="query"
-                  ref={(input) => { this.input = input; }}
                   defaultValue={this.props.query}
                   onChange={this.handleChange}
                   onKeyDown={this.handleKeyDown}
