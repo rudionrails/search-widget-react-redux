@@ -14,10 +14,9 @@ import './app.css';
 let store; // data store
 let router; // router to open and close the widget
 let container; // container for the react app
-let main; // container for the overall layout
 
 function closeEventListener(event) {
-  if (event.keyCode === 27) router.navigate('#/'); // ESC
+  if (event.keyCode === 27) router.navigate('#'); // ESC
 }
 
 function openEventListener(event) {
@@ -59,9 +58,8 @@ async function open() {
     const DOMNode = ReactDOM.findDOMNode(container);
     DOMNode.firstChild.classList.add('is-open');
 
-    // hide main
-    main = document.getElementById('main');
-    if (main) main.classList.add('is-hidden');
+    // prevent scolling
+    document.body.classList.add('is-hidden');
   }, 17);
 }
 
@@ -77,8 +75,8 @@ async function close() {
     const DOMNode = ReactDOM.findDOMNode(container);
     DOMNode.firstChild.classList.remove('is-open');
 
-    // show main content
-    if (main) main.classList.remove('is-hidden');
+    // enable scrolling
+    document.body.classList.remove('is-hidden');
 
     // wait for CSS animation to complete
     setTimeout(() => resolve(), 250);

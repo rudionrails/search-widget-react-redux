@@ -1,6 +1,6 @@
 /**
  * main container
  */
-#main.is-hidden {
-  filter: blur(8px);
+body.is-hidden {
+  overflow: hidden;
 }

@@ -54,6 +54,7 @@ class Search extends React.Component {
           results={results}
         />
       </div>
+    </div>
     );
   }
 }

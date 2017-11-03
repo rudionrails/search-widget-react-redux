@@ -40,6 +40,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "eslint": "^4.0.0",
@@ -84,6 +85,7 @@
   },
   "scripts": {
     "start": "node -r dotenv/config ./node_modules/.bin/webpack-dev-server --progress",
+    "start:dev": "DEBUG=app:* yarn start",
     "start:dash": "webpack-dashboard -- node -r dotenv/config ./node_modules/.bin/webpack-dev-server",
     "prebuild": "rm -rf ./build && yarn validate",
     "build": "node -r dotenv/config ./node_modules/.bin/webpack -p --progress",

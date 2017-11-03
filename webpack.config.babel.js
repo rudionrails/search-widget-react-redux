@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import Dotenv from 'dotenv-webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import StyleLintWebpackPlugin from 'stylelint-webpack-plugin';
@@ -67,6 +68,8 @@ const config = {
   },
 
   plugins: [
+    new Dotenv(),
+
     // @since webpack3 to enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
 
