@@ -47,7 +47,7 @@
           </p>
 
           <p class="lead">
-            Press this <a id="create-widget" href="#/finder" class="btn btn-lg btn-success">button</a> or <code>SHIFT+F</code> to open the finder.
+            Press this <button id="open-widget-button" class="btn btn-lg btn-success">button</button> or <code>SHIFT+F</code> to open the finder.
           </p>
         </div>
 
@@ -68,7 +68,7 @@
 
   <script id="sw-Script">
 document.addEventListener("DOMContentLoaded", function(event) { 
-  SearchWidget.create({
+  var widget = SearchWidget.create({
     // the API url to fetch the data
     apiUrl: 'https://jjuhznbemfbsm7ibz-mock.stoplight-proxy.io/search',
 
@@ -87,6 +87,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // the localstorage key for caching (optional)
     localStorageKey: 'search-widget-react-redux',
   });
+
+  var button = document.querySelector('#open-widget-button');
+  button.addEventListener('click', () => widget.open());
 });
   </script>
 

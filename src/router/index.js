@@ -16,7 +16,7 @@ export default function create({
     }
   }
 
-  async function navigate(path) {
+  async function navigate(path = '#') {
     if (path.startsWith('http')) {
       await close();
       Object.assign(window.location, { href: path });

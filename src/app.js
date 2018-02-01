@@ -17,7 +17,7 @@ let container; // container for the react app
 let main; // container for the overall layout
 
 function closeEventListener(event) {
-  if (event.keyCode === 27) router.navigate('#/'); // ESC
+  if (event.keyCode === 27) router.navigate(); // ESC
 }
 
 function openEventListener(event) {
@@ -122,6 +122,7 @@ function create(options = {}) {
       return config;
     },
 
+    open: () => router.navigate(config.triggerRoute),
     destroy,
   });
 }
