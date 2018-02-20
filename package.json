@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.0",
     "babel-jest": "^21.0.2",
     "babel-loader": "^7.0.0",
@@ -35,7 +35,7 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-runtime": "^6.20.0",
+    "babel-register": "^6.26.0",
     "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
@@ -78,13 +78,11 @@
     "testdouble": "^3.2.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.0.0",
-    "webpack-dashboard": "^1.0.0-5",
     "webpack-dev-server": "^2.4.5",
     "webpack-manifest-plugin": "^1.2.1"
   },
   "scripts": {
     "start": "node -r dotenv/config ./node_modules/.bin/webpack-dev-server --progress",
-    "start:dash": "webpack-dashboard -- node -r dotenv/config ./node_modules/.bin/webpack-dev-server",
     "prebuild": "rm -rf ./build && yarn validate",
     "build": "node -r dotenv/config ./node_modules/.bin/webpack -p --progress",
     "deploy": "surge ./build/ search-widget-react-redux.surge.sh",

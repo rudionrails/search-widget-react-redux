@@ -6,6 +6,7 @@ import { render, shallow, mount } from 'enzyme';
 import Bar from './Bar';
 
 const props = Object.freeze({
+  isLoading: false,
   onSearch: Function.prototype,
 });
 
@@ -13,49 +14,55 @@ test('renders without failures', () => {
   render(<Bar { ...props } />);
 });
 
-test('renders an input field with the right value', () => {
-  const query = 'Foo';
-  const input = shallow(<Bar { ...props } query={query} />).find('input');
-
-  expect(input.exists()).toBe(true);
-  expect(input.props().defaultValue).toBe(query);
+test('to match snapshot', () => {
+  const bar = render(<Bar { ...props } />);
+  expect(bar).toMatchSnapshot();
 });
 
-test('renders and input field and focusses it', () => {
-  const bar = mount(<Bar { ...props } />);
-  expect(bar.instance().activeElement).toBe(bar.input);
+describe('the loading indicator', () => {
+  test('renders loading indicator', () => {
+    const loading = shallow(<Bar { ...props } isLoading={true} />).find('Loading');
+    expect(loading.exists()).toBe(true);
+  });
 });
 
-test('does not render loading indicator', () => {
-  const loading = shallow(<Bar { ...props } />).find('Loading');
-  expect(loading.exists()).toBe(false);
+describe('the input field', () => {
+  test('renders with the right value', () => {
+    const query = 'Foo';
+    const input = shallow(<Bar { ...props } query={query} />).find('input');
+
+    expect(input.exists()).toBe(true);
+    expect(input.props().value).toBe(query);
+  });
+
+  test('is focussed', () => {
+    const bar = mount(<Bar { ...props } />);
+    expect(bar.instance().activeElement).toBe(bar.input);
+  });
 });
 
-test('renders loading indicator', () => {
-  const loading = shallow(<Bar { ...props } isLoading={true} />).find('Loading');
-  expect(loading.exists()).toBe(true);
-});
+describe('onSearch', () => {
+  test('triggers when input has changed', () => {
+    const onSearch = td.function('onSearch');
+    const input = shallow(<Bar { ...props } onSearch={onSearch} />).find('input');
 
-test('triggers onSearch when input has changed', () => {
-  const onSearch = td.function('onSearch');
-  const input = shallow(<Bar onSearch={onSearch} />).find('input');
+    input.simulate('change', { target: { value: 'Foo' } });
+    td.verify(onSearch('Foo'));
+  });
 
-  input.simulate('change', { target: { value: 'Foo' } });
-  td.verify(onSearch('Foo'));
-});
+  test('triggers when input receives ENTER key', () => {
+    const onSearch = td.function('onSearch');
+    const input = shallow(<Bar { ...props } onSearch={onSearch} />).find('input');
 
-test('triggers onSearch when input receives ENTER key', () => {
-  const onSearch = td.function('onSearch');
-  const input = shallow(<Bar onSearch={onSearch} />).find('input');
+    input.simulate('keyDown', { keyCode: 13, target: { value: 'Foo' } }); // ENTER
+    td.verify(onSearch('Foo'));
+  });
 
-  input.simulate('keyDown', { keyCode: 13, target: { value: 'Foo' } }); // ENTER
-  td.verify(onSearch('Foo'));
-});
+  test('does not trigger when input receives key other than ENTER', () => {
+    const onSearch = td.function('onSearch');
+    const input = shallow(<Bar { ...props } onSearch={onSearch} />).find('input');
 
-test('does not triggers onSearch when input receives key other than ENTER', () => {
-  const onSearch = td.function('onSearch');
-  const input = shallow(<Bar onSearch={onSearch} />).find('input');
-
-  input.simulate('keyDown', { keyCode: 27, target: { value: 'Foo' } }); // ESC
-  td.verify(onSearch(), { times: 0, ignoreExtraArgs: true });
+    input.simulate('keyDown', { keyCode: 27, target: { value: 'Foo' } }); // ESC
+    td.verify(onSearch(), { times: 0, ignoreExtraArgs: true });
+  });
 });

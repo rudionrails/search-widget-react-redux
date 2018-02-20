@@ -9,7 +9,7 @@ class Search extends React.Component {
   static propTypes = {
     isLoading: PropTypes.bool,
     query: PropTypes.string,
-    results: PropTypes.array.isRequired,
+    results: PropTypes.array,
     onSearch: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
@@ -27,12 +27,12 @@ class Search extends React.Component {
 
   render() {
     const {
-      isLoading,
-      query,
+      isLoading = false,
+      query = '',
+      results = [],
       onClose,
       onSearch,
       onClick,
-      results,
     } = this.props;
 
     return (

@@ -3,6 +3,10 @@
   table-layout: fixed;
 }
 
+.sw-Clear {
+  cursor: pointer;
+}
+
 /**
 * Bootstrap overrides
 */
