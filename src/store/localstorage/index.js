@@ -2,7 +2,7 @@ import config from 'src/config';
 import { localStorage } from 'src/helpers/browser';
 
 export function get() {
-  if (!config.localStorage) return undefined;
+  if (config.localStorage === false) return undefined;
 
   try {
     const serializedState = localStorage.getItem(config.localStorageKey);
@@ -15,7 +15,7 @@ export function get() {
 }
 
 export function set(state) {
-  if (!config.localStorage) return;
+  if (config.localStorage === false) return;
 
   try {
     const serializedState = JSON.stringify({

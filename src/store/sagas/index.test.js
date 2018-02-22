@@ -6,9 +6,7 @@ import {
   types as searchTypes,
   actions as searchActions,
 } from 'src/store/redux/search';
-import {
-  actions as loadingActions,
-} from 'src/store/redux/loading';
+import { actions as loadingActions } from 'src/store/redux/loading';
 
 // module under test
 import rootSaga, { fetchSearch } from './index';

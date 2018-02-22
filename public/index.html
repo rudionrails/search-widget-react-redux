@@ -47,7 +47,7 @@
           </p>
 
           <p class="lead">
-            Press this <button id="open-widget-button" class="btn btn-lg btn-success">button</button> or <code>SHIFT+F</code> to open the finder.
+            Press this <a id="open-widget-button" class="btn btn-lg btn-success" href="#/finder" >button</a> or <code>SHIFT+F</code> to open the finder.
           </p>
         </div>
 
@@ -75,26 +75,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // will already fetch data, even when widget is not yet opened (optional, default: true)
     preload: true,
 
-    // open the widget with this URL (optional)
-    triggerRoute: '#/finder',
+    // to disable this altogether, use `trigger: false`
+    trigger: {
+      // open the widget with this URL (optional)
+      path: '#/finder',
 
-    // open the app with this shortcut key (optional)
-    triggerKey: 'F',
+      // open the app with this shortcut key (optional)
+      key: 'F',
+    },
 
-    // enable/disable usage of localStorage (optional, default: true)
-    localStorage: true,
+    // to disable this altogether, use `localStorage: false`
+    localStorage: 'search-widget-react-redux',
 
-    // the localstorage key for caching (optional)
-    localStorageKey: 'search-widget-react-redux',
+    afterOpen({ container }) {
+      container.classList.add('is-open');
+    },
+
+    beforeClose({ container }) {
+      return new Promise((resolve) => {
+        container.classList.remove('is-open');
+      
+        // wait for CSS animation to complete
+        setTimeout(() => resolve(), 250);
+      });
+    },
   });
-
-  var button = document.querySelector('#open-widget-button');
-  button.addEventListener('click', () => widget.open());
 });
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
-
   <script>
     var script = document.querySelector('#sw-Script');
     var code = document.querySelector('#sw-Code');

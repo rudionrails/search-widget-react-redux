@@ -8,11 +8,6 @@
   top: 0;
   transition: 0.2s ease;
   z-index: 9999;
-
-  &.is-open {
-    opacity: 1;
-    pointer-events: auto;
-  }
 }
 
 .sw-Search-close {
@@ -59,15 +54,20 @@
 /**
 * Transitions
 */
-.sw-Search.is-open .sw-Search-close {
+.sw-Wrapper.is-open .sw-Search {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sw-Wrapper.is-open .sw-Search-close {
   opacity: 1;
   transform: scale3d(1, 1, 1);
 }
 
-.sw-Search.is-open .sw-Search-top {
+.sw-Wrapper.is-open .sw-Search-top {
   transform: translate3d(0, 0, 0);
 }
 
-.sw-Search.is-open .sw-Search-bottom {
+.sw-Wrapper.is-open .sw-Search-bottom {
   transform: translate3d(0, 0, 0);
 }

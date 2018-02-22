@@ -8,30 +8,36 @@ export default function create({
   open,
   close,
 }) {
-  async function handleLocationChange() {
-    if (window.location.hash === config.triggerRoute) {
-      await open();
+  function handleLocationChange() {
+    if (window.location.hash === config.trigger.path) {
+      open();
     } else {
-      await close();
+      close();
     }
   }
 
-  async function navigate(path = '#') {
-    if (path.startsWith('http')) {
-      await close();
-      Object.assign(window.location, { href: path });
-    } else {
-      await window.history.pushState(undefined, undefined, path);
-      await handleLocationChange();
-    }
+  function navigate(href = '#') {
+    window.history.pushState(undefined, undefined, href);
+    handleLocationChange();
+  }
+
+  function handleButtonClick(event) {
+    if (!event.target.hash || event.target.hash !== config.trigger.path) return;
+
+    event.preventDefault();
+    navigate(event.target.href);
   }
 
   function destroy() {
+    document.removeEventListener('click', handleButtonClick);
     document.removeEventListener('popstate', handleLocationChange);
   }
 
-  // initialization
+  /**
+   * initialization & public interface
+   */
   document.addEventListener('popstate', handleLocationChange);
+  document.addEventListener('click', handleButtonClick);
   handleLocationChange();
 
   return Object.freeze({

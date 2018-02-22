@@ -1125,6 +1125,7 @@ initialize {
                         "next": Object {
                           "attribs": Object {
                             "aria-label": "query",
+                            "autofocus": "",
                             "class": "form-control",
                             "placeholder": "Type for search...",
                             "type": "text",
@@ -1182,12 +1183,14 @@ initialize {
                           "type": "tag",
                           "x-attribsNamespace": Object {
                             "aria-label": undefined,
+                            "autofocus": undefined,
                             "class": undefined,
                             "placeholder": undefined,
                             "type": undefined,
                           },
                           "x-attribsPrefix": Object {
                             "aria-label": undefined,
+                            "autofocus": undefined,
                             "class": undefined,
                             "placeholder": undefined,
                             "type": undefined,
@@ -1206,6 +1209,7 @@ initialize {
                       Object {
                         "attribs": Object {
                           "aria-label": "query",
+                          "autofocus": "",
                           "class": "form-control",
                           "placeholder": "Type for search...",
                           "type": "text",
@@ -2368,12 +2372,14 @@ initialize {
                         "type": "tag",
                         "x-attribsNamespace": Object {
                           "aria-label": undefined,
+                          "autofocus": undefined,
                           "class": undefined,
                           "placeholder": undefined,
                           "type": undefined,
                         },
                         "x-attribsPrefix": Object {
                           "aria-label": undefined,
+                          "autofocus": undefined,
                           "class": undefined,
                           "placeholder": undefined,
                           "type": undefined,
@@ -2418,6 +2424,7 @@ initialize {
                         "prev": Object {
                           "attribs": Object {
                             "aria-label": "query",
+                            "autofocus": "",
                             "class": "form-control",
                             "placeholder": "Type for search...",
                             "type": "text",
@@ -3536,12 +3543,14 @@ initialize {
                           "type": "tag",
                           "x-attribsNamespace": Object {
                             "aria-label": undefined,
+                            "autofocus": undefined,
                             "class": undefined,
                             "placeholder": undefined,
                             "type": undefined,
                           },
                           "x-attribsPrefix": Object {
                             "aria-label": undefined,
+                            "autofocus": undefined,
                             "class": undefined,
                             "placeholder": undefined,
                             "type": undefined,

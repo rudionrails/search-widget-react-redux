@@ -14,7 +14,6 @@ describe('an app instance', () => {
 
   afterEach(() => {
     app.destroy();
-    // td.reset();
   });
 
   test('instance.destroy is available', () => {
