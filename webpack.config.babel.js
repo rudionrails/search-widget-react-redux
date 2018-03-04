@@ -33,6 +33,8 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: isProd ? '[hash]/[name].js' : '[name].js',
+    library: 'SearchWidget',
+    libraryTarget: 'umd',
   },
 
   resolve: {

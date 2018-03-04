@@ -87,11 +87,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // to disable this altogether, use `localStorage: false`
     localStorage: 'search-widget-react-redux',
 
+    // before and after callbacks are optional (for fancy css animations)
+    beforeOpen({ container }) {
+      document.querySelector('#main').classList.add('is-hidden');
+    },
+
     afterOpen({ container }) {
       container.classList.add('is-open');
     },
 
     beforeClose({ container }) {
+      document.querySelector('#main').classList.remove('is-hidden');
+
       return new Promise((resolve) => {
         container.classList.remove('is-open');
       
