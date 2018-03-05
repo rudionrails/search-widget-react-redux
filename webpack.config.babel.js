@@ -132,6 +132,8 @@ if (isProd) {
     new CopyWebpackPlugin([{
       from: 'public/*.css',
       flatten: true,
+    }, {
+      from: 'public/CORS', // @see https://surge.sh/help/enabling-cross-origin-resource-sharing
     }]),
 
     // Generate a manifest file which contains a mapping of all asset filenames
