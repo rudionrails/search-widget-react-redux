@@ -38,8 +38,8 @@ class Bar extends React.Component {
     return (
       <div className={`sw-Bar ${this.props.className}`}>
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+          <div className="row justify-content-sm-center">
+            <div className="col col-xs-10 col-sm-8">
               <div className="input-group">
                 <Loading show={this.props.isLoading} />
 
@@ -48,14 +48,14 @@ class Bar extends React.Component {
                   type="text"
                   className="form-control"
                   placeholder="Type for search..."
-                  aria-label="query"
+                  aria-label="Query (the term you want to get a result)"
                   ref={(input) => { this.input = input; }}
                   value={this.props.query}
                   onChange={this.handleChange}
                   onKeyDown={this.handleKeyDown}
                 />
 
-              {hasQuery && <Clear onClick={this.handleClear} />}
+                {hasQuery && <Clear onClick={this.handleClear} />}
               </div>
             </div>
           </div>

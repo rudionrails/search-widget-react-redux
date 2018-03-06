@@ -5,11 +5,10 @@ import Item from 'src/components/molecules/Item';
 import './Section.css';
 
 const Section = ({
-  width = 1,
   title,
   items,
 }) => (
-  <div className={`sw-Section col-sm-${width}`}>
+  <div className="sw-Section col">
     <h5 className="sw-Section-title">{ title }</h5>
 
     {items.map(item =>
@@ -21,7 +20,6 @@ const Section = ({
 );
 
 Section.propTypes = {
-  width: PropTypes.number,
   title: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
 };

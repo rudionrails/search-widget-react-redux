@@ -5,24 +5,19 @@ import Section from 'src/components/molecules/Section';
 const Results = ({
   className,
   results,
-}) => {
-  const width = Math.floor(12 / results.length);
-
-  return (
-    <div className={`sw-Results ${className}`}>
-      <div className="container-fluid">
-        <div className="row">
-          {results.map(result =>
-            <Section
-              key={`section-${result.title}`}
-              width={width}
-              { ...result }
-            />)}
-        </div>
+}) => (
+  <div className={`sw-Results ${className}`}>
+    <div className="container-fluid">
+      <div className="row">
+        {results.map(result =>
+          <Section
+            key={`section-${result.title}`}
+            { ...result }
+          />)}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 Results.propTypes = {
   className: PropTypes.string,

@@ -18,16 +18,14 @@ class Item extends React.Component {
     const { onClick } = this.context;
 
     return (
-      <div className="sw-Item panel" onClick={() => onClick(url)}>
-        <div className="panel-body">
+      <div className="sw-Item card" onClick={() => onClick(url)}>
+        <div className="card-body p-3">
           <div className="media">
-            <div className="media-left">
-              <i className="sw-Item-avatar material-icons media-object">account_circle</i>
-            </div>
+            <i className="sw-Item-avatar material-icons mr-3">account_circle</i>
 
             <div className="media-body">
-              <h4 className="media-heading">{ title }</h4>
-              { url }
+              <h5 className="mt-0">{ title }</h5>
+              <small>{ url }</small>
             </div>
           </div>
         </div>
