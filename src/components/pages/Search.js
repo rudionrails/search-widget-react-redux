@@ -10,6 +10,7 @@ class Search extends React.Component {
     isLoading: PropTypes.bool,
     query: PropTypes.string,
     results: PropTypes.array,
+    showClose: PropTypes.bool,
     onSearch: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
@@ -30,6 +31,7 @@ class Search extends React.Component {
       isLoading = false,
       query = '',
       results = [],
+      showClose,
       onClose,
       onSearch,
       onClick,
@@ -37,9 +39,10 @@ class Search extends React.Component {
 
     return (
       <div className="sw-Search">
-        <div className="sw-Search-close" onClick={onClose}>
-          <i className="material-icons">clear</i>
-        </div>
+        {showClose &&
+          <div className="sw-Search-close" onClick={onClose}>
+            <i className="material-icons">clear</i>
+          </div>}
 
         <Bar
           className="sw-Search-top"

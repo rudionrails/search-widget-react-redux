@@ -7,6 +7,7 @@ import Search from './Search';
 
 const props = {
   results: [],
+  showClose: true,
   onSearch: Function.prototype,
   onClose: Function.prototype,
   onClick: Function.prototype,

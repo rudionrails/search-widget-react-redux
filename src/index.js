@@ -42,6 +42,7 @@ async function open() {
     ReactDOM.render(
       <Provider store={store}>
         <Search
+          showClose={config.trigger}
           onClose={() => (config.trigger ? router.navigate('#') : close())}
           onClick={() => console.log('click')}
         />
@@ -78,6 +79,7 @@ export function create(options = {}) {
 
   // store + router
   store = createStore(config);
+
   if (typeof config.trigger === 'object') {
     router = createRouter({
       trigger: config.trigger,
