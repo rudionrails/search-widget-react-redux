@@ -128,10 +128,9 @@ const config = {
 
 if (isProd) {
   config.plugins.push(
-    // copy static assets
+    // copy static assets (everything in /public)
     new CopyWebpackPlugin([
-      'public/CORS', // @see https://surge.sh/help/enabling-cross-origin-resource-sharing
-      'public/favicon.ico',
+      { from: 'public/*', flatten: true },
     ]),
 
     // Generate a manifest file which contains a mapping of all asset filenames

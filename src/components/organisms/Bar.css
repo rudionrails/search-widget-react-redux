@@ -15,30 +15,3 @@
   text-align: center;
   vertical-align: middle;
 }
-
-.sw-Bar .input-group {
-  border-bottom: 2px solid #fff;
-  color: #fff;
-}
-
-.sw-Bar .input-group input,
-.sw-Bar .input-group input:focus {
-  background: transparent;
-  border: 0 none;
-  box-shadow: none;
-  color: inherit;
-  font-size: 24px;
-  height: 46px;
-  line-height: 30px;
-  padding-bottom: 8px;
-  padding-top: 8px;
-}
-
-.sw-Bar .input-group input::placeholder {
-  color: rgba(145, 145, 145, 0.7);
-}
-
-.sw-Bar .input-group-text {
-  background: transparent;
-  border: 0 none;
-}

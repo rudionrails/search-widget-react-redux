@@ -29,7 +29,7 @@ initialize {
                     "children": Array [
                       Object {
                         "attribs": Object {
-                          "class": "input-group-prepend",
+                          "class": "sw-Loading input-group-prepend",
                         },
                         "children": Array [
                           Object {
@@ -1154,12 +1154,12 @@ initialize {
                           "namespace": "http://www.w3.org/1999/xhtml",
                           "next": Object {
                             "attribs": Object {
-                              "class": "input-group-append",
+                              "class": "input-group-append sw-Clear is-visible",
                             },
                             "children": Array [
                               Object {
                                 "attribs": Object {
-                                  "class": "sw-Clear input-group-text",
+                                  "class": "input-group-text",
                                 },
                                 "children": Array [
                                   Object {
@@ -1257,12 +1257,12 @@ initialize {
                         "namespace": "http://www.w3.org/1999/xhtml",
                         "next": Object {
                           "attribs": Object {
-                            "class": "input-group-append",
+                            "class": "input-group-append sw-Clear is-visible",
                           },
                           "children": Array [
                             Object {
                               "attribs": Object {
-                                "class": "sw-Clear input-group-text",
+                                "class": "input-group-text",
                               },
                               "children": Array [
                                 Object {
@@ -1322,7 +1322,7 @@ initialize {
                         "parent": [Circular],
                         "prev": Object {
                           "attribs": Object {
-                            "class": "input-group-prepend",
+                            "class": "sw-Loading input-group-prepend",
                           },
                           "children": Array [
                             Object {
@@ -2463,12 +2463,12 @@ initialize {
                       },
                       Object {
                         "attribs": Object {
-                          "class": "input-group-append",
+                          "class": "input-group-append sw-Clear is-visible",
                         },
                         "children": Array [
                           Object {
                             "attribs": Object {
-                              "class": "sw-Clear input-group-text",
+                              "class": "input-group-text",
                             },
                             "children": Array [
                               Object {
@@ -2531,7 +2531,7 @@ initialize {
                           "parent": [Circular],
                           "prev": Object {
                             "attribs": Object {
-                              "class": "input-group-prepend",
+                              "class": "sw-Loading input-group-prepend",
                             },
                             "children": Array [
                               Object {

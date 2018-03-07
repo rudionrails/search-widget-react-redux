@@ -55,7 +55,7 @@ class Bar extends React.Component {
                   onKeyDown={this.handleKeyDown}
                 />
 
-                {hasQuery && <Clear onClick={this.handleClear} />}
+                <Clear show={hasQuery} onClick={this.handleClear} />
               </div>
             </div>
           </div>

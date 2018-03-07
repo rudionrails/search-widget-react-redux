@@ -1,18 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Clear.css';
 
 const Clear = ({
+  show = false,
   onClick,
-}) => (
-  <div className="input-group-append" onClick={onClick}>
-    <span className="sw-Clear input-group-text">
-      <i className="material-icons">clear</i>
-    </span>
-  </div>
-);
+}) => {
+  const classnames = [
+    'input-group-append',
+    'sw-Clear',
+    show ? 'is-visible' : 'is-hidden',
+  ].join(' ');
+
+  return (
+    <div className={classnames} onClick={onClick}>
+      <span className="input-group-text">
+        <i className="material-icons">clear</i>
+      </span>
+    </div>
+  );
+};
 
 Clear.propTypes = {
   onClick: PropTypes.func.isRequired,
+  show: PropTypes.bool,
 };
 
 export default Clear;

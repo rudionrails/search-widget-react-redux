@@ -18,6 +18,7 @@ let router; // router to open and close the widget
 async function close() {
   if (config.beforeClose) await config.beforeClose(config);
 
+  config.container.classList.remove('sw-Wrapper');
   document.removeEventListener('keydown', handleClose);
   document.addEventListener('keydown', handleOpen);
 
@@ -30,6 +31,7 @@ async function close() {
 async function open() {
   if (config.beforeOpen) await config.beforeOpen(config);
 
+  config.container.classList.add('sw-Wrapper');
   document.addEventListener('keydown', handleClose);
   document.removeEventListener('keydown', handleOpen);
 
@@ -59,7 +61,6 @@ export function create(options = {}) {
     config.container = document.createElement('div');
     document.body.appendChild(config.container);
   }
-  config.container.classList.add('sw-Wrapper');
 
   // store + router + event listeners
   store = createStore(config);
