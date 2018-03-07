@@ -1,6 +1,0 @@
-/**
- * main container
- */
-#main.is-hidden {
-  filter: blur(8px);
-}

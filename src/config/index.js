@@ -1,3 +1,5 @@
+import { window } from 'src/helpers/browser';
+
 /**
 * All the options that can be passed into the widget
 */
@@ -16,6 +18,9 @@ const config = {
 
   // to disable this altogether, use `localStorage: false`
   localStorage: 'search-widget-react-redux', // used to identity data in localstorage
+
+  // when an item has been clicked
+  onClick: href => Object.assign(window.location, { href }),
 };
 
 export function configure(options) {

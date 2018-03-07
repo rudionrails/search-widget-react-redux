@@ -31,7 +31,7 @@ class Search extends React.Component {
       isLoading = false,
       query = '',
       results = [],
-      showClose,
+      showClose = true,
       onClose,
       onSearch,
       onClick,
