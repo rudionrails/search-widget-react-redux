@@ -1,3 +1,7 @@
+body.no-scroll {
+  overflow: hidden;
+}
+
 #main.is-hidden {
   filter: blur(8px);
 }
@@ -10,6 +14,7 @@
   right: 0;
 }
 
+/*
 .sw-Search-close {
   color: rgba(145, 145, 145, 0.7);
 }
@@ -72,3 +77,4 @@
 .sw-Loading {
   fill: #fff;
 }
+*/

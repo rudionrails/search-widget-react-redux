@@ -25,9 +25,11 @@ const config = {
   // You can exclude the *.map files from the build during deployment.
   devtool: isProd ? 'source-map' : 'cheap-module-eval-source-map',
 
-  entry: [
-    'babel-polyfill',
-    path.resolve(srcPath, 'index.js'),
+  entry: {
+    main: [
+      !isProd && 'babel-polyfill',
+      path.resolve(srcPath, 'index.js'),
+    ].filter(e => e !== false),
   ],
 
   output: {

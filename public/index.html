@@ -83,16 +83,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // before and after callbacks are optional (for fancy css animations)
     beforeOpen() {
+      document.body.classList.add('no-scroll');
       document.querySelector('#main').classList.add('is-hidden');
     },
 
     beforeClose() {
+      document.body.classList.remove('no-scroll');
       document.querySelector('#main').classList.remove('is-hidden');
     },
   });
 });
   </script>
 
+  <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,fetch,es6"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
   <script>
     var script = document.querySelector('#sw-Script');

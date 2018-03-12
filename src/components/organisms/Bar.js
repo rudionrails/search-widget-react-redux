@@ -36,7 +36,7 @@ class Bar extends React.Component {
     const hasQuery = this.props.query !== '';
 
     return (
-      <div className={`sw-Bar ${this.props.className}`}>
+      <div className={`sw-Bar bg-dark ${this.props.className}`}>
         <div className="container-fluid">
           <div className="row justify-content-sm-center">
             <div className="col col-xs-10 col-sm-8">
